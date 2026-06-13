@@ -1,0 +1,90 @@
+/* ScrollPane for Icon Grid */
+.icon-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-border-color: transparent;
+}
+
+.icon-scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.icon-scroll-pane .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.icon-scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: #dde3f0;
+    -fx-background-radius: 8;
+}
+
+.icon-scroll-pane .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #b8c5d6;
+}
+
+.grid-icons {
+    -fx-hgap: 48;
+    -fx-vgap: 48;
+    -fx-alignment: CENTER;
+    /* Forces it to wrap right after the 3rd item */
+    -fx-pref-wrap-length: 700;
+    -fx-padding: 5;
+    -fx-background-color: transparent;
+}
+
+.icon-item {
+    -fx-spacing: 24;
+    -fx-alignment: TOP_CENTER;
+    -fx-pref-width: 260;
+    -fx-cursor: hand;
+}
+
+.icon-box {
+    -fx-pref-width: 200;
+    -fx-pref-height: 180;
+    -fx-background-color: #e8eaf1;
+    -fx-border-color: #dde3f0;
+    -fx-border-width: 1;
+    -fx-border-radius: 24;
+    -fx-background-radius: 24;
+    -fx-alignment: CENTER;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 6, 0.0, 0, 4);
+}
+
+.icon-item:hover .icon-box {
+    -fx-background-color: #334155;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 15, 0.0, 0, 10);
+    /* Moves the icon box up by 5 pixels on hover */
+    -fx-translate-y: -8;
+}
+
+.icon-svg {
+    -fx-fill: transparent;
+    -fx-stroke: #333333;
+    -fx-stroke-line-cap: round;
+    -fx-stroke-line-join: round;
+    -fx-stroke-width: 1.5;
+}
+
+.icon-item:hover .icon-svg {
+    -fx-stroke: white;
+}
+
+.icon-label {
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+    -fx-text-fill: #31456e;
+    -fx-padding: 0;
+    -fx-underline: false;
+}
+
+.icon-item:hover .icon-label {
+    -fx-text-fill: #31456e;
+}
+
+
+.username-text {
+    -fx-font-size: 42;
+    -fx-font-weight: bold;
+    -fx-text-fill: #31456e;
+}

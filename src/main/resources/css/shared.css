@@ -1,0 +1,278 @@
+/* Define JavaFX variables in the .root class using single-hyphen notation */
+.root {
+    -bg-main: #edf1f5;
+    -bg-card: #e8eaf1;
+    -bg-alt: #ecf2f8;
+    -text-primary: #31456e;
+    -text-secondary: #4B5563;
+    -text-muted: #6B7280;
+    -accent-primary: #334155;
+    -accent-hover: #7a879e;
+    -border-color: #dde3f0;
+
+    -fx-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -fx-background-color: -bg-main; /* Just call the variable directly */
+    -fx-text-fill: -text-primary;
+    -fx-font-size: 16;
+}
+
+/* Typography - JavaFX looks at the class name globally or natively */
+Label {
+    -fx-font-weight: bold;
+    -fx-text-fill: -text-primary;
+}
+
+/* Navbar */
+.navbar {
+    -fx-background-color: -bg-card;
+    -fx-border-color: -border-color;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 16 32 16 32;
+    -fx-spacing: 24;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.nav-logo {
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+    -fx-text-fill: -accent-primary;
+    -fx-padding: 0;
+    -fx-underline: false;
+}
+
+.nav-logo:hover {
+    -fx-text-fill: -accent-hover;
+}
+
+.nav-links {
+    -fx-spacing: 24;
+    -fx-alignment: CENTER;
+}
+
+.nav-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #4B5563;
+    -fx-font-size: 16;
+    -fx-font-weight: 500;
+    -fx-padding: 8 16 8 16;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-cursor: hand;
+    -fx-text-alignment: CENTER;
+    -fx-background-radius: 0;
+}
+
+.nav-btn:hover {
+    -fx-text-fill: #31456e;
+    -fx-background-color: rgba(49, 69, 110, 0.1);
+    -fx-background-radius: 8;
+}
+
+.nav-btn:pressed {
+    -fx-text-fill: #334155;
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+/* Buttons */
+.btn-primary {
+    -fx-background-color: -accent-primary;
+    -fx-text-fill: white;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+    -fx-padding: 12 24 12 24;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-underline: false;
+}
+
+.btn-primary:hover {
+    -fx-background-color: -accent-hover;
+}
+
+.btn-primary:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+.btn-secondary {
+    -fx-background-color: white;
+    -fx-text-fill: -text-primary;
+    -fx-font-size: 16;
+    -fx-padding: 12 24 12 24;
+    -fx-border-color: -border-color;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-underline: false;
+}
+
+.btn-secondary:hover {
+    -fx-border-color: -text-muted;
+}
+
+/* Container */
+.container {
+    -fx-max-width: 1200;
+    -fx-padding: 32;
+    -fx-spacing: 32;
+}
+
+/* Cards */
+.card {
+    -fx-background-color: -bg-card;
+    -fx-border-color: -border-color;
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-padding: 24;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 6, 0.0, 0, 4);
+}
+
+/* Form Elements */
+TextField, PasswordField, TextArea, ComboBox {
+    -fx-font-size: 16;
+    -fx-padding: 12 16 12 16;
+    -fx-border-color: -border-color;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-color: -bg-card;
+    -fx-background-radius: 8;
+    -fx-text-fill: -text-primary;
+}
+
+TextField:focused, PasswordField:focused, TextArea:focused, ComboBox:focused {
+    -fx-border-color: -accent-primary;
+    -fx-border-width: 2;
+}
+
+/* Hyperlinks */
+Hyperlink {
+    -fx-padding: 0;
+    -fx-text-fill: -text-secondary;
+    -fx-underline: false;
+    -fx-cursor: hand;
+}
+
+Hyperlink:hover {
+    -fx-text-fill: -accent-primary;
+    -fx-underline: false;
+}
+
+/* Separator */
+Separator {
+    -fx-border-color: -border-color;
+}
+
+/* Scrollbar Styling */
+ScrollBar {
+    -fx-padding: 0;
+}
+
+ScrollBar:vertical .increment-button,
+ScrollBar:vertical .decrement-button {
+    -fx-padding: 0;
+}
+
+ScrollBar:vertical .thumb {
+    -fx-background-color: -border-color;
+    -fx-background-radius: 8;
+}
+
+ScrollBar:vertical .thumb:hover {
+    -fx-background-color: -text-muted;
+}
+
+/* Tooltip */
+.tooltip {
+    -fx-background-color: -accent-primary;
+    -fx-text-fill: white;
+    -fx-font-size: 14;
+    -fx-padding: 8;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+
+/* Class sử dụng -text-primary: cỡ 30, đậm (bold) */
+.text-title-large {
+    -fx-text-fill: -text-primary;
+    -fx-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}
+
+/* Class sử dụng -text-secondary: cỡ 14, độ đậm 500 (Medium) */
+.text-desc-medium {
+    -fx-text-fill: -text-secondary;
+    -fx-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+}
+
+/* Class chính cho ComboBox màu trắng */
+.combo-box-white {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8px;
+    -fx-border-color: -border-color; /* Dùng biến từ .root */
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-padding: 2px 4px;
+}
+
+/* Label hiển thị text đang được chọn bên trong ComboBox */
+.combo-box-white .label {
+    -fx-text-fill: -text-primary; /* Dùng biến từ .root */
+}
+
+/* Hiệu ứng khi người dùng hover chuột hoặc click focus vào ComboBox */
+.combo-box-white:hover,
+.combo-box-white:focused {
+    -fx-border-color: -accent-primary; /* Đổi màu viền sang accent */
+}
+
+/* Nút chứa mũi tên bên phải (bỏ nền mặc định của JavaFX đi) */
+.combo-box-white .arrow-button {
+    -fx-background-color: transparent;
+}
+
+/* Hình mũi tên bên trong nút */
+.combo-box-white .arrow {
+    -fx-background-color: -text-secondary; /* Dùng biến từ .root */
+}
+
+/* =========================================
+   STYLE CHO DROPDOWN POPUP (DANH SÁCH XỔ XUỐNG)
+   ========================================= */
+
+/* Khung danh sách chứa các item */
+.combo-box-white .list-view {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8px;
+    -fx-border-color: -border-color;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+}
+
+/* Style cho từng dòng item (cell) trong danh sách */
+.combo-box-white .list-cell {
+    -fx-text-fill: -text-primary;
+    -fx-background-color: transparent;
+    -fx-padding: 8px 12px;
+}
+
+/* Khi di chuột qua (hover) từng item trong danh sách */
+.combo-box-white .list-cell:hover {
+    -fx-background-color: -bg-alt; /* Dùng nền phụ sáng từ .root */
+    -fx-text-fill: -accent-primary;
+}
+
+/* Khi một item đang được chọn trong danh sách */
+.combo-box-white .list-cell:filled:selected {
+    -fx-background-color: -bg-card; /* Dùng màu nền card từ .root để làm nổi bật */
+    -fx-text-fill: -text-primary;
+}

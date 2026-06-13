@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.shape.SVGPath?>
+
+<?import javafx.scene.layout.TilePane?>
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.final_project.main_page.MainPageController">
+    <top>
+        <HBox styleClass="navbar" spacing="24">
+            <padding>
+                <Insets top="16" bottom="16" left="32" right="32"/>
+            </padding>
+            <Label text="36BANK" styleClass="nav-logo"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <HBox spacing="24" styleClass="nav-links">
+                <Button text="Home" styleClass="nav-btn" onAction="#handleNavHome"/>
+                <Button text="News" styleClass="nav-btn" onAction="#handleNavNews"/>
+                <Button text="Branches" styleClass="nav-btn" onAction="#handleNavBranches"/>
+                <Button text="Profile" styleClass="nav-btn" onAction="#handleNavProfile"/>
+                <Button fx:id="loginBtn" text="LOGIN" styleClass="btn-primary" onAction="#handleLogin"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="64" styleClass="container">
+            <padding>
+                <Insets top="0" bottom="0" left="32" right="32"/>
+            </padding>
+
+            <HBox styleClass="header-section" spacing="48">
+                <HBox styleClass="header-section">
+                </HBox>
+
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label fx:id="greetingLabel" text="GOOD MORNING" styleClass="greeting-text"/>
+
+                    <HBox alignment="CENTER_LEFT">
+                        <Label fx:id="userNameLabel" text="DUONG PHAN QUANG BACH" styleClass="username-text" managed="false" visible="false"/>
+
+                        <Region HBox.hgrow="ALWAYS"/>
+
+                        <Label fx:id="balanceLabel" text="\$5,432.00" styleClass="username-text"/>
+                    </HBox>
+                </VBox>
+            </HBox>
+
+            <ScrollPane styleClass="icon-scroll-pane" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+                <FlowPane styleClass="grid-icons" >
+                    <VBox styleClass="icon-item" onMouseClicked="#handleTransfer">
+                        <StackPane styleClass="icon-box">
+                            <SVGPath styleClass="icon-svg" content="M8 7h12m0 0l-4-4m4 4l-4 4m8 6H4m0 0l4 4m-4-4l4-4" scaleX="2.5" scaleY="2.5"/>
+                        </StackPane>
+                        <Label styleClass="icon-label" text="MONEY TRANSFER"/>
+                    </VBox>
+
+                    <VBox styleClass="icon-item" onMouseClicked="#handleShowHistory">
+                        <StackPane styleClass="icon-box">
+                            <SVGPath styleClass="icon-svg" content="M 12 2 a 10 10 0 1 0 0 20 a 10 10 0 1 0 0 -20 M 12 6 v 6 l 4 2" scaleX="2.5" scaleY="2.5"/>
+                        </StackPane>
+                        <Label styleClass="icon-label" text="SHOW HISTORY"/>
+                    </VBox>
+
+                    <VBox styleClass="icon-item" onMouseClicked="#handlePayBill">
+                        <StackPane styleClass="icon-box">
+                            <SVGPath styleClass="icon-svg" content="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" scaleX="2.5" scaleY="2.5"/>
+                        </StackPane>
+                        <Label styleClass="icon-label" text="PAY BILL"/>
+                    </VBox>
+
+                    <VBox styleClass="icon-item" onMouseClicked="#handleSummary">
+                        <StackPane styleClass="icon-box">
+                            <SVGPath styleClass="icon-svg" content="M 3 3 v 18 h 18 M 18.7 8 l -5.1 5.2 l -2.8 -2.7 L 7 14.3" scaleX="2.5" scaleY="2.5"/>
+                        </StackPane>
+                        <Label styleClass="icon-label" text="SUMMARY"/>
+                    </VBox>
+
+                    <VBox styleClass="icon-item" onMouseClicked="#handleExplore">
+                        <StackPane styleClass="icon-box">
+                            <SVGPath styleClass="icon-svg" content="M 12 2 a 10 10 0 1 0 0 20 a 10 10 0 1 0 0 -20 M 16.24 7.76 l -2.12 6.36 l -6.36 2.12 l 2.12 -6.36 l 6.36 -2.12 z" scaleX="2.5" scaleY="2.5"/>
+                        </StackPane>
+                        <Label styleClass="icon-label" text="EXPLORE"/>
+                    </VBox>
+
+                    <VBox styleClass="icon-item" onMouseClicked="#handleMyQR">
+                        <StackPane styleClass="icon-box">
+                            <SVGPath styleClass="icon-svg" content="M4 4h6v6H4z M14 4h6v6h-6z M4 14h6v6H4z M14 14h6v6h-6z" scaleX="2.5" scaleY="2.5"/>
+                        </StackPane>
+                        <Label styleClass="icon-label" text="MY QR"/>
+                    </VBox>
+                </FlowPane>
+            </ScrollPane>
+        </VBox>
+    </center>
+</BorderPane>

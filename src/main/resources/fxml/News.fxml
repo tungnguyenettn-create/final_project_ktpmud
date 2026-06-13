@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1">
+
+    <top>
+        <HBox styleClass="navbar" spacing="24">
+            <padding>
+                <Insets top="16" bottom="16" left="32" right="32"/>
+            </padding>
+            <Label text="SecureBank" styleClass="nav-logo"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <HBox spacing="24" styleClass="nav-links" alignment="CENTER">
+                <Button text="Home" styleClass="nav-btn"/>
+                <Button text="News" styleClass="nav-btn"/>
+                <Button text="Branches" styleClass="nav-btn"/>
+                <Button text="Login" styleClass="btn-primary">
+                    <padding>
+                        <Insets top="8" bottom="8" left="16" right="16"/>
+                    </padding>
+                </Button>
+            </HBox>
+        </HBox>
+    </top>
+
+    <center>
+        <StackPane alignment="CENTER">
+            <padding>
+                <Insets top="32" bottom="32" left="32" right="32"/>
+            </padding>
+
+            <VBox maxWidth="1100.0" spacing="24" alignment="TOP_CENTER">
+                <Label text="Financial News" styleClass="text-title-large" maxWidth="Infinity" alignment="TOP_LEFT"/>
+
+                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                            style="-fx-background-color: transparent; -fx-background: transparent;">
+
+                    <FlowPane hgap="24" vgap="24">
+                        <padding>
+                            <Insets bottom="16" right="16"/>
+                        </padding>
+
+                        <VBox styleClass="card" prefWidth="320.0" spacing="12">
+                            <padding>
+                                <Insets top="24" bottom="24" left="24" right="24"/>
+                            </padding>
+                            <Label text="Market Update" styleClass="text-desc-medium" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                            <Label text="Latest trends in the financial market show a steady growth." wrapText="true"/>
+                            <Hyperlink text="Read more" style="-fx-text-fill: -accent-primary; -fx-font-weight: bold;"/>
+                        </VBox>
+
+                        <VBox styleClass="card" prefWidth="320.0" spacing="12">
+                            <padding>
+                                <Insets top="24" bottom="24" left="24" right="24"/>
+                            </padding>
+                            <Label text="Interest Rates" styleClass="text-desc-medium" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                            <Label text="Central bank announces new interest rates for the quarter." wrapText="true"/>
+                            <Hyperlink text="Read more" style="-fx-text-fill: -accent-primary; -fx-font-weight: bold;"/>
+                        </VBox>
+
+                    </FlowPane>
+                </ScrollPane>
+            </VBox>
+        </StackPane>
+    </center>
+</BorderPane>

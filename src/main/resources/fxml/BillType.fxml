@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.control.Hyperlink?>
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.final_project.extension.BillTypeController">
+    <top>
+        <HBox styleClass="navbar" spacing="24">
+            <padding>
+                <Insets top="16" bottom="16" left="32" right="32"/>
+            </padding>
+            <Label text="36BANK" styleClass="nav-logo"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <HBox spacing="24" styleClass="nav-links">
+                <Button text="Home" styleClass="nav-btn" onAction="#handleNavHome"/>
+                <Button text="News" styleClass="nav-btn" onAction="#handleNavNews"/>
+                <Button text="Branches" styleClass="nav-btn" onAction="#handleNavBranches"/>
+                <Button text="Profile" styleClass="nav-btn" onAction="#handleNavProfile"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="32" styleClass="container">
+            <padding>
+                <Insets top="32" bottom="32" left="32" right="32"/>
+            </padding>
+
+            <Label text="Select Bill Type" styleClass="text-title-large"/>
+
+            <ScrollPane styleClass="icon-scroll-pane" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+                <FlowPane styleClass="grid-icons" hgap="24" vgap="24">
+
+                    <VBox styleClass="icon-item" onMouseClicked="#handleElectricity" alignment="CENTER">
+                        <StackPane styleClass="icon-box">
+                            <SVGPath styleClass="icon-svg" content="M13 2L3 14h9l-1 8 10-12h-9l1-8z" scaleX="2.2" scaleY="2.2"/>
+                        </StackPane>
+                        <Label styleClass="icon-label" text="ELECTRICITY"/>
+                        <Label text="Pay your power bills" styleClass="greeting-text" style="-fx-font-size: 12px;"/>
+                    </VBox>
+
+                    <VBox styleClass="icon-item" onMouseClicked="#handleWater" alignment="CENTER">
+                        <StackPane styleClass="icon-box">
+                            <SVGPath styleClass="icon-svg" content="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" scaleX="2.2" scaleY="2.2"/>
+                        </StackPane>
+                        <Label styleClass="icon-label" text="WATER"/>
+                        <Label text="Pay your water bills" styleClass="greeting-text" style="-fx-font-size: 12px;"/>
+                    </VBox>
+
+                    <VBox styleClass="icon-item" onMouseClicked="#handleInternet" alignment="CENTER">
+                        <StackPane styleClass="icon-box">
+                            <SVGPath styleClass="icon-svg" content="M1 12s4-4 11-4 11 4 11 4M4.5 15.5s3.5-2.5 7.5-2.5 7.5 2.5 7.5 2.5M8 19s1.5-1 4-1 4 1 4 1" scaleX="2.2" scaleY="2.2"/>
+                        </StackPane>
+                        <Label styleClass="icon-label" text="INTERNET"/>
+                        <Label text="Pay your internet bills" styleClass="greeting-text" style="-fx-font-size: 12px;"/>
+                    </VBox>
+
+                    <VBox styleClass="icon-item" onMouseClicked="#handleMobile" alignment="CENTER">
+                        <StackPane styleClass="icon-box">
+                            <SVGPath styleClass="icon-svg" content="M5 2h14a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z M12 18h.01" scaleX="2.2" scaleY="2.2"/>
+                        </StackPane>
+                        <Label styleClass="icon-label" text="MOBILE"/>
+                        <Label text="Recharge mobile plans" styleClass="greeting-text" style="-fx-font-size: 12px;"/>
+                    </VBox>
+
+                </FlowPane>
+            </ScrollPane>
+        </VBox>
+    </center>
+</BorderPane>
