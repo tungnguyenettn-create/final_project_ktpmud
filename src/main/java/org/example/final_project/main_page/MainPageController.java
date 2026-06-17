@@ -7,7 +7,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import org.example.final_project.AppSession;
+import org.example.final_project.NavigationManager;
 import org.example.final_project.database.AccountHandling;
 
 import java.math.BigDecimal;
@@ -116,53 +118,93 @@ public class MainPageController implements Initializable {
     }
 
     // Navigation handlers
-    @FXML
-    private void handleNavHome() {
-        System.out.println("Home clicked");
-        // TODO: Navigate to home page
-    }
+    @FXML private void handleNavHome() {
 
-    @FXML
-    private void handleNavNews() {
-        System.out.println("News clicked");
-        // TODO: Navigate to news page
+        Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
+        NavigationManager.setPrimaryStage(primaryStage);
+        NavigationManager.switchScene("/fxml/MainPage.fxml", "Main Page", "/css/shared.css", "/css/MainPage.css") ;
     }
-
-    @FXML
-    private void handleNavBranches() {
-        System.out.println("Branches clicked");
-        // TODO: Navigate to branches page
+    @FXML private void handleNavNews() {
+        Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
+        NavigationManager.setPrimaryStage(primaryStage);
+        NavigationManager.switchScene("/fxml/News.fxml", "News Page", "/css/shared.css", "/css/news.css");
     }
-
-    @FXML
-    private void handleNavProfile() {
-        System.out.println("Profile clicked");
-        // TODO: Navigate to profile page
+    @FXML private void handleNavBranches() {
+        Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
+        NavigationManager.setPrimaryStage(primaryStage);
+        NavigationManager.switchScene("/fxml/Branchs.fxml", "Branchs Page", "/css/shared.css", "/css/branchs.css");
     }
+    @FXML private void handleNavProfile() {
+        if (AppSession.getInstance().isAuthenticated()) {
+            Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
+            NavigationManager.setPrimaryStage(primaryStage);
+            NavigationManager.switchScene("/fxml/UserInformation.fxml", "User Informaion Page", "/css/shared.css", "/css/user_profile.css");
+        }
+        else {
+            Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
+            NavigationManager.setPrimaryStage(primaryStage);
+            NavigationManager.switchScene("/fxml/LoginPage.fxml", "Login Page", "/css/shared.css", "/css/LoginPage.css");
+        }
+        }
 
     // Icon grid handlers
     @FXML
     private void handleTransfer(MouseEvent event) {
-        System.out.println("Money Transfer clicked");
-        // TODO: Navigate to transfer page
+        if (AppSession.getInstance().isAuthenticated()) {
+            System.out.println("Navigate to Transfer");
+            Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
+            NavigationManager.setPrimaryStage(primaryStage);
+            NavigationManager.switchScene("/fxml/Transfer.fxml", "Transfer Page", "/css/shared.css", "/css/transfer.css");}
+        else {
+            Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
+            NavigationManager.setPrimaryStage(primaryStage);
+            NavigationManager.switchScene("/fxml/LoginPage.fxml", "Login Page", "/css/shared.css", "/css/LoginPage.css");
+        }
     }
 
     @FXML
     private void handleShowHistory(MouseEvent event) {
-        System.out.println("Show History clicked");
-        // TODO: Navigate to history page
+        if (AppSession.getInstance().isAuthenticated()){
+            System.out.println("Show History clicked");
+            Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
+            NavigationManager.setPrimaryStage(primaryStage);
+            NavigationManager.switchScene("/fxml/ShowHistory.fxml", "Show History Page", "/css/shared.css", "/css/show_history.css");
+        }else {
+            Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
+            NavigationManager.setPrimaryStage(primaryStage);
+            NavigationManager.switchScene("/fxml/LoginPage.fxml", "Login Page", "/css/shared.css", "/css/LoginPage.css");
+        }
     }
 
     @FXML
     private void handlePayBill(MouseEvent event) {
-        System.out.println("Pay Bill clicked");
-        // TODO: Navigate to bill payment page
+        if (AppSession.getInstance().isAuthenticated()){
+            System.out.println("Pay Bill clicked");
+            Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
+            NavigationManager.setPrimaryStage(primaryStage);
+            NavigationManager.switchScene("/fxml/BillType.fxml", "Bill Type Page", "/css/shared.css", "/css/bill_type.css");
+        } else {
+            Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
+            NavigationManager.setPrimaryStage(primaryStage);
+            NavigationManager.switchScene("/fxml/LoginPage.fxml", "Login Page", "/css/shared.css", "/css/LoginPage.css");
+        }
     }
 
     @FXML
     private void handleSummary(MouseEvent event) {
-        System.out.println("Summary clicked");
-        // TODO: Navigate to summary page
+        if (AppSession.getInstance().isAuthenticated()){
+            System.out.println("Summary clicked");
+            Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
+            NavigationManager.setPrimaryStage(primaryStage);
+            NavigationManager.switchScene("/fxml/Summary.fxml", "Summary Page", "/css/shared.css", "/css/summary.css");
+        }
+        else {
+            Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
+            NavigationManager.setPrimaryStage(primaryStage);
+            NavigationManager.switchScene("/fxml/LoginPage.fxml", "Login Page", "/css/shared.css", "/css/LoginPage.css");
+
+        }
+
     }
 
     @FXML
@@ -179,7 +221,9 @@ public class MainPageController implements Initializable {
 
     @FXML
     private void handleLogin() {
-        System.out.println("Login clicked");
-        // TODO: Navigate to login page
+        Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
+        NavigationManager.setPrimaryStage(primaryStage);
+        NavigationManager.switchScene("/fxml/LoginPage.fxml", "Login Page", "/css/shared.css", "/css/LoginPage.css");
+
     }
 }

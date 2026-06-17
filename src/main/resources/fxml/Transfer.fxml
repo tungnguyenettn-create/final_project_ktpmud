@@ -61,6 +61,11 @@
                         <TextField fx:id="amountField" promptText="Enter amount" prefHeight="40.0"/>
                     </VBox>
 
+                    <VBox spacing="8">
+                        <Label text="Desciption" styleClass="text-desc-medium"/>
+                        <TextField fx:id="descriptionField" promptText="Enter description" prefHeight="40.0"/>
+                    </VBox>
+
                     <Button text="Transfer" styleClass="btn-primary" maxWidth="Infinity" prefHeight="44.0" onAction="#handleTransfer">
                         <VBox.margin>
                             <Insets top="8"/>
