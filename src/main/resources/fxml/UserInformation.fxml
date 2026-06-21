@@ -14,7 +14,9 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1">
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.final_project.user_profile.UserInformationController"
+            >
 
     <top>
         <HBox styleClass="navbar" spacing="24">
@@ -64,23 +66,23 @@
 
                         <children>
                             <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                                <Label text="Full Name" styleClass="text-desc-medium"/>
-                                <TextField text="John Doe" editable="false" />
+                                <Label  text="Full Name" styleClass="text-desc-medium"/>
+                                <TextField fx:id="NameField" text="John Doe" editable="false" />
                             </VBox>
 
                             <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                                <Label text="Email" styleClass="text-desc-medium"/>
-                                <TextField text="john.doe@example.com" editable="false" />
+                                <Label text="Identity Card" styleClass="text-desc-medium"/>
+                                <TextField fx:id="IdentityField" text="john.doe@example.com" editable="false" />
                             </VBox>
 
                             <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="1">
                                 <Label text="Phone" styleClass="text-desc-medium"/>
-                                <TextField text="+1 234 567 890" editable="false" />
+                                <TextField fx:id="PhoneField" text="+1 234 567 890" editable="false" />
                             </VBox>
 
                             <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                 <Label text="Address" styleClass="text-desc-medium"/>
-                                <TextField text="123 Bank St, City" editable="false" />
+                                <TextField fx:id="AddressField" text="123 Bank St, City" editable="false" />
                             </VBox>
                         </children>
                     </GridPane>

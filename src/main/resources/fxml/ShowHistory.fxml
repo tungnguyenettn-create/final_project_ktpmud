@@ -10,12 +10,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1">
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.final_project.extension.ShowHistoryController">
 
     <top>
         <HBox styleClass="navbar" spacing="24">
@@ -40,7 +40,7 @@
             </padding>
 
             <VBox maxWidth="900.0" spacing="24" alignment="TOP_LEFT">
-                <Label text="Transaction History" style="text-title-large"/>
+                <Label text="Transaction History" styleClass="text-title-large"/>
 
                 <VBox styleClass="card">
                     <padding>
@@ -50,8 +50,7 @@
                     <ScrollPane fitToWidth="true" prefHeight="400.0"
                                 style="-fx-background-color: transparent; -fx-background: transparent; -fx-hbar-policy: NEVER;">
                         <content>
-
-                            <GridPane hgap="12" vgap="16">
+                            <GridPane fx:id="historyGrid" hgap="12" vgap="16">
                                 <columnConstraints>
                                     <ColumnConstraints percentWidth="20.0" />
                                     <ColumnConstraints percentWidth="40.0" />
@@ -67,19 +66,6 @@
 
                                     <Separator GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="4" style="-fx-border-color: #e5e7eb; -fx-border-width: 0 0 2 0;"/>
 
-                                    <Label text="2026-06-01" style="-fx-text-fill: #4B5563; -fx-font-weight: 600; -fx-font-size: 14;" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-                                    <Label text="Grocery Store" style="-fx-text-fill: #4B5563; -fx-font-weight: 600; -fx-font-size: 14;" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                                    <Label text="-$45.00" style="-fx-text-fill: #ef4444; -fx-font-weight: 600; -fx-font-size: 14;" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
-                                    <Label text="Completed" style="-fx-text-fill: #4B5563; -fx-font-weight: 600; -fx-font-size: 14;" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
-
-                                    <Separator GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="4" style="-fx-border-color: #e5e7eb; -fx-border-width: 0 0 1 0;"/>
-
-                                    <Label text="2026-05-30" style="-fx-text-fill: #4B5563; -fx-font-weight: 600; -fx-font-size: 14;" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-                                    <Label text="Salary Deposit" style="-fx-text-fill: #4B5563; -fx-font-weight: 600; -fx-font-size: 14;" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
-                                    <Label text="+$3,200.00" style="-fx-text-fill: #10b981; -fx-font-weight: 600; -fx-font-size: 14;" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
-                                    <Label text="Completed" style="-fx-text-fill: #4B5563; -fx-font-weight: 600; -fx-font-size: 14;" GridPane.columnIndex="3" GridPane.rowIndex="4"/>
-
-                                    <Separator GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="4" style="-fx-border-color: #e5e7eb; -fx-border-width: 0 0 1 0;"/>
                                 </children>
                             </GridPane>
                         </content>

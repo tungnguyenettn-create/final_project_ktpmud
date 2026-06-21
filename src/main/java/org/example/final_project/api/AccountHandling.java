@@ -77,6 +77,7 @@ public class AccountHandling {
                 map.put("dob",           textOrNull(data, "dob"));
                 map.put("city",          textOrNull(data, "city"));
                 map.put("address",       textOrNull(data, "address"));
+                map.put("phone",         textOrNull(data, "phone"));
                 map.put("branch_id",     data.has("branch_id") ? data.get("branch_id").asInt() : null);
                 return map;
             }
@@ -113,6 +114,7 @@ public class AccountHandling {
         catch (Exception  e){
             System.err.println(e.getMessage());
         }
+        System.out.println(meta.toString());
         return meta;
     }
 

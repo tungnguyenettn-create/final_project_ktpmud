@@ -101,7 +101,7 @@ public class MainPageController implements Initializable {
     @FXML private void handleNavProfile() {
         switchTo(
                 AppSession.getInstance().isAuthenticated()
-                        ? "/fxml/UserInformation.fxml" : "/fxml/LoginPage.fxml",
+                        ? "/fxml/AccountInformation.fxml" : "/fxml/LoginPage.fxml",
                 "Profile",
                 AppSession.getInstance().isAuthenticated()
                         ? "/css/user_profile.css" : "/css/LoginPage.css"

@@ -14,7 +14,8 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1">
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.final_project.user_profile.AccountInformationController">
 
     <top>
         <HBox styleClass="navbar" spacing="24">
@@ -41,7 +42,7 @@
             <VBox maxWidth="800.0" spacing="24" alignment="TOP_LEFT">
 
                 <HBox spacing="24">
-                    <Button text="User Information" styleClass="btn-secondary"/>
+                    <Button text="User Information" styleClass="btn-secondary" onMouseClicked="#handleUserInformation"/>
                     <Button text="Account Information" styleClass="btn-primary"/>
                 </HBox>
 
@@ -65,17 +66,17 @@
                         <children>
                             <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="0">
                                 <Label text="Account Number" style="-fx-font-weight: 500;"/>
-                                <TextField text="XXXX-XXXX-XXXX-1234" editable="false" />
+                                <TextField fx:id="AccountField" text="XXXX-XXXX-XXXX-1234" editable="false" />
                             </VBox>
 
                             <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="0">
                                 <Label text="Open Date" styleClass="text-desc-medium"/>
-                                <TextField text="10/12/2017" editable="false" />
+                                <TextField fx:id="DateField" text="10/12/2017" editable="false" />
                             </VBox>
 
                             <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="1">
                                 <Label text="Current Balance" styleClass="text-desc-medium"/>
-                                <TextField text="\$5,432.00" editable="false" style="-fx-font-weight: bold;"/>
+                                <TextField fx:id="BalanceField" text="\$5,432.00" editable="false" style="-fx-font-weight: bold;"/>
                             </VBox>
 
                         </children>

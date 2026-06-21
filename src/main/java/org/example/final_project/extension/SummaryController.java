@@ -3,6 +3,15 @@ package org.example.final_project.extension;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
+import org.example.final_project.AppSession;
+import org.example.final_project.api.HistoryHandling;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class SummaryController {
 
@@ -14,61 +23,136 @@ public class SummaryController {
 
     @FXML
     public void initialize() {
-        setupDaysChart();
-        setupMonthsChart();
+        AppSession session = AppSession.getInstance();
+
+        if (session.isAuthenticated()) {
+            String token = session.getAuthToken();
+
+            // Vẽ biểu đồ 7 ngày và 12 tháng
+            setupDaysChart(token);
+            setupMonthsChart(token);
+        } else {
+            System.err.println("[WARN SummaryController] User chưa đăng nhập.");
+        }
     }
 
-    private void setupDaysChart() {
-        // Chuỗi dữ liệu Thu nhập theo ngày
+    /**
+     * Logic xử lý và nạp dữ liệu cho biểu đồ 7 ngày gần nhất
+     */
+    private void setupDaysChart(String token) {
+        // 1. Lấy dữ liệu từ API
+        List<Map<String, String>> dailyData = HistoryHandling.getDailyHistory(token);
+
+        // Chuyển List từ API thành Map để tra cứu nhanh theo định dạng "yyyy-MM-dd"
+        Map<String, Map<String, String>> apiDataMap = new HashMap<>();
+        if (dailyData != null) {
+            for (Map<String, String> tx : dailyData) {
+                String dateKey = tx.get("date"); // "period_label" bên API đã được map thành "date"
+                if (dateKey != null) {
+                    apiDataMap.put(dateKey, tx);
+                }
+            }
+        }
+
+        // 2. Tạo 2 nhánh dữ liệu (Series) cho Income và Expenses
         XYChart.Series<String, Number> incomeSeries = new XYChart.Series<>();
-        incomeSeries.setName("Income");
-        incomeSeries.getData().add(new XYChart.Data<>("Mon", 1200));
-        incomeSeries.getData().add(new XYChart.Data<>("Tue", 1500));
-        incomeSeries.getData().add(new XYChart.Data<>("Wed", 800));
-        incomeSeries.getData().add(new XYChart.Data<>("Thu", 2100));
-        incomeSeries.getData().add(new XYChart.Data<>("Fri", 1700));
-        incomeSeries.getData().add(new XYChart.Data<>("Sat", 900));
-        incomeSeries.getData().add(new XYChart.Data<>("Sun", 1100));
+        incomeSeries.setName("Income (Thu)");
 
-        // Chuỗi dữ liệu Chi tiêu theo ngày
         XYChart.Series<String, Number> expenseSeries = new XYChart.Series<>();
-        expenseSeries.setName("Expenses");
-        expenseSeries.getData().add(new XYChart.Data<>("Mon", 800));
-        expenseSeries.getData().add(new XYChart.Data<>("Tue", 1100));
-        expenseSeries.getData().add(new XYChart.Data<>("Wed", 950));
-        expenseSeries.getData().add(new XYChart.Data<>("Thu", 1300));
-        expenseSeries.getData().add(new XYChart.Data<>("Fri", 1400));
-        expenseSeries.getData().add(new XYChart.Data<>("Sat", 1800));
-        expenseSeries.getData().add(new XYChart.Data<>("Sun", 500));
+        expenseSeries.setName("Expenses (Chi)");
 
-        // Đổ dữ liệu vào biểu đồ Ngày
+        // 3. Tạo danh sách nhãn cho đúng 7 ngày gần đây (tính ngược từ hôm nay)
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        for (int i = 6; i >= 0; i--) {
+            String targetDayStr = today.minusDays(i).format(dayFormatter);
+
+            double inflow = 0.0;
+            double outflow = 0.0;
+
+            // Nếu API có chứa dữ liệu của ngày này thì lấy ra, ngược lại giữ nguyên 0.0
+            if (apiDataMap.containsKey(targetDayStr)) {
+                Map<String, String> data = apiDataMap.get(targetDayStr);
+                inflow = parseDoubleSafe(data.get("inflow"));
+                outflow = parseDoubleSafe(data.get("outflow"));
+            }
+
+            // Đưa dữ liệu vào Series (Dùng Math.abs để đảm bảo cột Chi tiêu luôn dương khi hiển thị đồ thị cột)
+            incomeSeries.getData().add(new XYChart.Data<>(targetDayStr, inflow));
+            expenseSeries.getData().add(new XYChart.Data<>(targetDayStr, Math.abs(outflow)));
+        }
+
+        // 4. Đổ dữ liệu vào biểu đồ
+        daysChart.getData().clear();
         daysChart.getData().addAll(incomeSeries, expenseSeries);
     }
 
-    private void setupMonthsChart() {
-        // Chuỗi dữ liệu Thu nhập theo tháng
+    /**
+     * Logic xử lý và nạp dữ liệu cho biểu đồ 12 tháng gần nhất
+     */
+    private void setupMonthsChart(String token) {
+        // 1. Lấy dữ liệu từ API
+        List<Map<String, String>> monthlyData = HistoryHandling.getMonthlyHistory(token);
+
+        // Chuyển List thành Map tra cứu nhanh theo định dạng "yyyy-MM"
+        Map<String, Map<String, String>> apiDataMap = new HashMap<>();
+        if (monthlyData != null) {
+            for (Map<String, String> tx : monthlyData) {
+                String monthKey = tx.get("date"); // Ví dụ: "2026-06"
+                if (monthKey != null) {
+                    apiDataMap.put(monthKey, tx);
+                }
+            }
+        }
+
+        // 2. Tạo 2 nhánh dữ liệu (Series)
         XYChart.Series<String, Number> incomeSeries = new XYChart.Series<>();
-        incomeSeries.setName("Income");
-        incomeSeries.getData().add(new XYChart.Data<>("Jan", 32000));
-        incomeSeries.getData().add(new XYChart.Data<>("Feb", 28000));
-        incomeSeries.getData().add(new XYChart.Data<>("Mar", 35000));
-        incomeSeries.getData().add(new XYChart.Data<>("Apr", 41000));
-        incomeSeries.getData().add(new XYChart.Data<>("May", 39000));
-        incomeSeries.getData().add(new XYChart.Data<>("Jun", 45000));
-        incomeSeries.getData().add(new XYChart.Data<>("Jul", 48000));
+        incomeSeries.setName("Income (Thu)");
 
-        // Chuỗi dữ liệu Chi tiêu theo tháng
         XYChart.Series<String, Number> expenseSeries = new XYChart.Series<>();
-        expenseSeries.setName("Expenses");
-        expenseSeries.getData().add(new XYChart.Data<>("Jan", 25000));
-        expenseSeries.getData().add(new XYChart.Data<>("Feb", 22000));
-        expenseSeries.getData().add(new XYChart.Data<>("Mar", 27000));
-        expenseSeries.getData().add(new XYChart.Data<>("Apr", 30000));
-        expenseSeries.getData().add(new XYChart.Data<>("May", 31000));
-        expenseSeries.getData().add(new XYChart.Data<>("Jun", 29000));
-        expenseSeries.getData().add(new XYChart.Data<>("Jul", 34000));
+        expenseSeries.setName("Expenses (Chi)");
 
-        // Đổ dữ liệu vào biểu đồ Tháng
+        // 3. Tạo danh sách nhãn cho đúng 12 tháng gần đây
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter monthFormatter = DateTimeFormatter.ofPattern("yyyy-MM");
+
+        for (int i = 11; i >= 0; i--) {
+            String targetMonthStr = today.minusMonths(i).format(monthFormatter);
+
+            double inflow = 0.0;
+            double outflow = 0.0;
+
+            // Nếu ngày này có giao dịch trong API Map
+            if (apiDataMap.containsKey(targetMonthStr)) {
+                Map<String, String> data = apiDataMap.get(targetMonthStr);
+                inflow = parseDoubleSafe(data.get("inflow"));
+                outflow = parseDoubleSafe(data.get("outflow"));
+            }
+
+            // Đưa dữ liệu vào Series
+            incomeSeries.getData().add(new XYChart.Data<>(targetMonthStr, inflow));
+            expenseSeries.getData().add(new XYChart.Data<>(targetMonthStr, Math.abs(outflow)));
+        }
+
+        // 4. Đổ dữ liệu vào biểu đồ tháng
+        monthsChart.getData().clear();
         monthsChart.getData().addAll(incomeSeries, expenseSeries);
+    }
+
+    /**
+     * Hàm bổ trợ chuyển đổi chuỗi String sang Double an toàn tránh lỗi đúp (NumberFormatException)
+     */
+    private double parseDoubleSafe(String value) {
+        if (value == null || value.trim().isEmpty() || value.equalsIgnoreCase("null")) {
+            return 0.0;
+        }
+        try {
+            // Thay thế mọi ký tự thừa hoặc định dạng lạ nếu có
+            return Double.parseDouble(value.trim());
+        } catch (NumberFormatException e) {
+            System.err.println("[WARN SummaryController] Lỗi parse số: " + value);
+            return 0.0;
+        }
     }
 }
