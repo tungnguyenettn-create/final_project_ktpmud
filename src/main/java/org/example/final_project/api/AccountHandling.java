@@ -88,6 +88,7 @@ public class AccountHandling {
 
     public static int updatePassword(String token, String newPassword) {
         try {
+
             Map<String, String> body = Map.of("new_password", newPassword);
             JsonNode resp = ApiClient.put("/api/customer/change-password", body, token);
             return ApiClient.isSuccess(resp) ? 1 : 0;
@@ -98,9 +99,20 @@ public class AccountHandling {
     }
 
     public static Map<String, Object> getMetadata(String token) {
+
         Map<String, Object> meta = new HashMap<>();
-        meta.put("balance", getBalance(token));
-        meta.put("open_date", null);
+        try {
+            JsonNode resp = ApiClient.get("/api/customer/acc-info", token);
+            System.out.println(resp);
+            if (ApiClient.isSuccess(resp)) {
+                JsonNode data = resp.get("data");
+                meta.put("balance", textOrNull(data, "balance"));
+                meta.put("open_date", textOrNull(data, "open_date"));
+            }
+        }
+        catch (Exception  e){
+            System.err.println(e.getMessage());
+        }
         return meta;
     }
 
@@ -114,9 +126,12 @@ public class AccountHandling {
 
         String[] tokenHolder = new String[1];
         int result = login("ACC-00014", "pin_hash", tokenHolder);
+
         System.out.println("Login result (expect 2): " + result);
         System.out.println("Token: " + tokenHolder[0]);
 
+        Map<String, Object> meta = getMetadata(tokenHolder[0]);
+        System.out.println(meta.toString());
         if (tokenHolder[0] != null) {
             System.out.println("Balance: " + getBalance(tokenHolder[0]));
             System.out.println("User info: " + getUserFromAccount(tokenHolder[0]));
