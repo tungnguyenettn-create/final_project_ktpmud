@@ -2,7 +2,12 @@ module org.example.final_project {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    // 1. Khai báo sử dụng Jackson
+    requires com.fasterxml.jackson.databind;
 
+    // 2. Mở đúng package của bạn cho Jackson gom dữ liệu
+    opens org.example.final_project.api to com.fasterxml.jackson.databind;
+    requires java.net.http;
 
     opens org.example.final_project to javafx.fxml;
     exports org.example.final_project;

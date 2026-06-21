@@ -8,7 +8,7 @@ import org.example.final_project.AppSession;
 import org.example.final_project.database.TransferHandling;
 import org.example.final_project.NavigationManager;
 import javafx.concurrent.Task;
-
+import javafx.scene.control.Alert;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -79,7 +79,11 @@ public class TransferController {
         // Kiểm tra dữ liệu đầu vào cơ bản (Client-side validation)
         if (destinationInput.isEmpty() || amountRaw.isEmpty()) {
             System.out.println("Vui lòng điền đầy đủ thông tin chuyển khoản!");
-            // TODO: Bạn có thể hiển thị một Alert dialog tại đây để báo cho user biết
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Giao dịch thất bại");
+            alert.setHeaderText(null);
+            String errorMsg = "Vui lòng điền đầy đủ thông tin chuyển khoản";
+            alert.setContentText(errorMsg);
             return;
         }
 
@@ -133,7 +137,7 @@ public class TransferController {
 
             if (resultCode == 1) {
                 // --- THÀNH CÔNG: Hiển thị Alert loại INFORMATION ---
-                javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Giao dịch thành công");
                 alert.setHeaderText(null);
                 alert.setContentText(TransferHandling.getResultMessage(resultCode));
@@ -155,7 +159,7 @@ public class TransferController {
 
             } else {
                 // --- THẤT BẠI (Mã lỗi nghiệp vụ hoặc không tìm thấy Bank ID): Hiển thị Alert loại ERROR ---
-                javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
+                Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Giao dịch thất bại");
                 alert.setHeaderText(null);
 
