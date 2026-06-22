@@ -2,10 +2,7 @@ package org.example.final_project.login_page;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.*;
 import javafx.concurrent.Task;
 import javafx.stage.Stage;
 import org.example.final_project.AppSession;
@@ -35,6 +32,7 @@ public class LoginPageController implements Initializable {
 
         if (username.isEmpty() || password.isEmpty()) {
             //lblMessage.setText("Vui long dien day du thong tin!");
+            showAlert(Alert.AlertType.ERROR, "Thieu thong tin dang nhap", "Ten nguoi dung hoac mat khau khong duoc de trong");
             return;
         }
 
@@ -65,9 +63,15 @@ public class LoginPageController implements Initializable {
                             "/css/shared.css", "/css/MainPage.css"
                     );
                 }
-                //case 1 -> lblMessage.setText("Sai mat khau!");
-                //case 0 -> lblMessage.setText("Tai khoan khong ton tai!");
-                //default -> lblMessage.setText("Loi he thong, vui long thu lai!");
+                case 1 -> {
+                    showAlert(Alert.AlertType.ERROR, "Dang nhap khong thanh cong", "Sai mat khau!");
+                }
+                case 0 -> {
+                    showAlert(Alert.AlertType.ERROR, "Dang nhap khong thanh cong", "Tai khoan khong ton tai!");
+                }
+                default -> {
+                    showAlert(Alert.AlertType.ERROR, "Dang nhap khong thanh cong", "Loi he thong, vui long thu lai!");
+                }
             }
         });
 
@@ -86,6 +90,14 @@ public class LoginPageController implements Initializable {
         loginBtn.setDisable(locked);
         usernameField.setEditable(!locked);
         passwordField.setEditable(!locked);
+    }
+
+    private java.util.Optional<ButtonType> showAlert(Alert.AlertType type, String title, String content) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        return alert.showAndWait();
     }
 
     // --- DIEU HUONG ---
