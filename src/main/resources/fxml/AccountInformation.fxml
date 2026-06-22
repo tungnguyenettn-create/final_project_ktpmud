@@ -13,76 +13,89 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.final_project.user_profile.AccountInformationController">
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="org.example.final_project.user_profile.AccountInformationController"
+           prefWidth="1280.0" prefHeight="800.0"
+           style="-fx-background-color: linear-gradient(to bottom, #ffffff 0%, #eaeaf0 40%, #dcdfe0 100%);">
 
-    <top>
-        <HBox styleClass="navbar" spacing="24">
-            <padding>
-                <Insets top="16" bottom="16" left="32" right="32"/>
-            </padding>
-            <Label text="36BANK" styleClass="nav-logo" onMouseClicked="#handleNavHome"/>
-            <Region HBox.hgrow="ALWAYS"/>
-            <HBox spacing="24" styleClass="nav-links">
-                <Button text="Home" styleClass="nav-btn"/>
-                <Button text="News" styleClass="nav-btn"/>
-                <Button text="Branches" styleClass="nav-btn"/>
-                <Button text="Profile" styleClass="nav-btn"/>
-            </HBox>
-        </HBox>
-    </top>
+    <Region style="-fx-background-image: url('https://i.pinimg.com/1200x/ee/26/fe/ee26fe3a94febbbac011ed6ee677ba7f.jpg');
+                   -fx-background-size: cover;
+                   -fx-background-position: center center;
+                   -fx-background-repeat: no-repeat;" />
 
-    <center>
-        <StackPane alignment="CENTER">
-            <padding>
-                <Insets top="32" bottom="32" left="32" right="32"/>
-            </padding>
+    <Label text="IMAGE SOURCE: Words Bubble Up Like Soda Pop - Kyōhei Ishiguro"
+           StackPane.alignment="BOTTOM_LEFT"
+           style="-fx-font-size: 10px; -fx-font-weight: 300; -fx-text-fill: #31456e; -fx-opacity: 0.3; -fx-padding: 0 0 10 15;"/>
 
-            <VBox maxWidth="800.0" spacing="24" alignment="TOP_LEFT">
-
-                <HBox spacing="24">
-                    <Button text="User Information" styleClass="btn-secondary" onMouseClicked="#handleUserInformation"/>
-                    <Button text="Account Information" styleClass="btn-primary"/>
+    <BorderPane prefWidth="1150.0" prefHeight="720.0"
+                style="-fx-background-color: rgba(255, 255, 255, 0.6); -fx-background-radius: 24px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 20, 0, 0, 10);">
+        <top>
+            <HBox styleClass="navbar" spacing="24">
+                <padding>
+                    <Insets top="16" bottom="16" left="32" right="32"/>
+                </padding>
+                <Label text="36BANK" styleClass="nav-logo" onMouseClicked="#handleNavHome"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <HBox spacing="24" styleClass="nav-links">
+                    <Button text="Home" styleClass="nav-btn"/>
+                    <Button text="News" styleClass="nav-btn"/>
+                    <Button text="Branches" styleClass="nav-btn"/>
+                    <Button text="Profile" styleClass="nav-btn"/>
                 </HBox>
+            </HBox>
+        </top>
 
-                <VBox styleClass="card" spacing="24" alignment="TOP_LEFT">
-                    <padding>
-                        <Insets top="24" bottom="24" left="24" right="24"/>
-                    </padding>
+        <center>
+            <StackPane alignment="CENTER">
+                <padding>
+                    <Insets top="32" bottom="32" left="32" right="32"/>
+                </padding>
 
-                    <Label text="Account Profile" style="-fx-font-size: 28; -fx-font-weight: bold;"/>
+                <VBox maxWidth="800.0" spacing="24" alignment="TOP_LEFT">
 
-                    <GridPane hgap="24" vgap="16">
-                        <columnConstraints>
-                            <ColumnConstraints percentWidth="50.0" />
-                            <ColumnConstraints percentWidth="50.0" />
-                        </columnConstraints>
-                        <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                        </rowConstraints>
+                    <HBox spacing="24">
+                        <Button text="User Information" styleClass="btn-secondary" onMouseClicked="#handleUserInformation"/>
+                        <Button text="Account Information" styleClass="btn-primary"/>
+                    </HBox>
 
-                        <children>
-                            <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                                <Label text="Account Number" style="-fx-font-weight: 500;"/>
-                                <TextField fx:id="AccountField" text="XXXX-XXXX-XXXX-1234" editable="false" />
-                            </VBox>
+                    <VBox styleClass="card" spacing="24" alignment="TOP_LEFT">
+                        <padding>
+                            <Insets top="24" bottom="24" left="24" right="24"/>
+                        </padding>
 
-                            <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                                <Label text="Open Date" styleClass="text-desc-medium"/>
-                                <TextField fx:id="DateField" text="10/12/2017" editable="false" />
-                            </VBox>
+                        <Label text="Account Profile" style="-fx-font-size: 28; -fx-font-weight: bold;"/>
 
-                            <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="1">
-                                <Label text="Current Balance" styleClass="text-desc-medium"/>
-                                <TextField fx:id="BalanceField" text="\$5,432.00" editable="false" style="-fx-font-weight: bold;"/>
-                            </VBox>
+                        <GridPane hgap="24" vgap="16">
+                            <columnConstraints>
+                                <ColumnConstraints percentWidth="50.0" />
+                                <ColumnConstraints percentWidth="50.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
 
-                        </children>
-                    </GridPane>
+                            <children>
+                                <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                    <Label text="Account Number" style="-fx-font-weight: 500;"/>
+                                    <TextField fx:id="AccountField" text="XXXX-XXXX-XXXX-1234" editable="false" />
+                                </VBox>
+
+                                <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                    <Label text="Open Date" styleClass="text-desc-medium"/>
+                                    <TextField fx:id="DateField" text="10/12/2017" editable="false" />
+                                </VBox>
+
+                                <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                    <Label text="Current Balance" styleClass="text-desc-medium"/>
+                                    <TextField fx:id="BalanceField" text="\$5,432.00" editable="false" style="-fx-font-weight: bold;"/>
+                                </VBox>
+
+                            </children>
+                        </GridPane>
+                    </VBox>
                 </VBox>
-            </VBox>
-        </StackPane>
-    </center>
-</BorderPane>
+            </StackPane>
+        </center>
+    </BorderPane>
+</StackPane>

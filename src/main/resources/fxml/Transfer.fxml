@@ -16,7 +16,7 @@
            prefWidth="1280.0" prefHeight="800.0"
            style="-fx-background-color: linear-gradient(to bottom, #ffffff 0%, #eaeaf0 40%, #dcdfe0 100%);">
 
-    <Region style="-fx-background-image: url('https://i.pinimg.com/1200x/c9/91/f1/c991f1a7440e196560c0116cdb00d55d.jpg');
+    <Region style="-fx-background-image: url('https://i.pinimg.com/1200x/ee/26/fe/ee26fe3a94febbbac011ed6ee677ba7f.jpg');
                    -fx-background-size: cover;
                    -fx-background-position: center center;
                    -fx-background-repeat: no-repeat;" />
@@ -27,7 +27,6 @@
 
     <BorderPane prefWidth="1150.0" prefHeight="720.0"
                 style="-fx-background-color: rgba(255, 255, 255, 0.6); -fx-background-radius: 24px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 20, 0, 0, 10);">
-
         <top>
             <HBox styleClass="navbar" spacing="32" alignment="CENTER_LEFT">
                 <padding>

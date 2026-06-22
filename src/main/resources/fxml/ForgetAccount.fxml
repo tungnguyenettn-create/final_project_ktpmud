@@ -13,59 +13,73 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.final_project.forget_account.ForgetAccountController"
->
-    <top>
-        <HBox styleClass="navbar" spacing="24">
-            <padding>
-                <Insets top="16" bottom="16" left="32" right="32"/>
-            </padding>
-            <Label text="36BANK" styleClass="nav-logo" onMouseClicked="#handleNavHome"/>
-            <Region HBox.hgrow="ALWAYS"/>
-            <HBox spacing="24" styleClass="nav-links">
-                <Button text="Home" styleClass="nav-btn" onAction="#handleNavHome"/>
-                <Button text="News" styleClass="nav-btn" onAction="#handleNavNews"/>
-                <Button text="Branches" styleClass="nav-btn" onAction="#handleNavBranches"/>
-                <Button text="Profile" styleClass="nav-btn" onAction="#handleNavProfile"/>
+
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="org.example.final_project.forget_account.ForgetAccountController"
+           prefWidth="1280.0" prefHeight="800.0"
+           style="-fx-background-color: linear-gradient(to bottom, #ffffff 0%, #eaeaf0 40%, #dcdfe0 100%);">
+
+    <Region style="-fx-background-image: url('https://i.pinimg.com/1200x/ee/26/fe/ee26fe3a94febbbac011ed6ee677ba7f.jpg');
+                   -fx-background-size: cover;
+                   -fx-background-position: center center;
+                   -fx-background-repeat: no-repeat;" />
+
+    <Label text="IMAGE SOURCE: Words Bubble Up Like Soda Pop - Kyōhei Ishiguro"
+           StackPane.alignment="BOTTOM_LEFT"
+           style="-fx-font-size: 10px; -fx-font-weight: 300; -fx-text-fill: #31456e; -fx-opacity: 0.3; -fx-padding: 0 0 10 15;"/>
+
+    <BorderPane prefWidth="1150.0" prefHeight="720.0"
+                style="-fx-background-color: rgba(255, 255, 255, 0.6); -fx-background-radius: 24px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 20, 0, 0, 10);">
+        <top>
+            <HBox styleClass="navbar" spacing="24">
+                <padding>
+                    <Insets top="16" bottom="16" left="32" right="32"/>
+                </padding>
+                <Label text="36BANK" styleClass="nav-logo" onMouseClicked="#handleNavHome"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <HBox spacing="24" styleClass="nav-links">
+                    <Button text="Home" styleClass="nav-btn" onAction="#handleNavHome"/>
+                    <Button text="News" styleClass="nav-btn" onAction="#handleNavNews"/>
+                    <Button text="Branches" styleClass="nav-btn" onAction="#handleNavBranches"/>
+                    <Button text="Profile" styleClass="nav-btn" onAction="#handleNavProfile"/>
+                </HBox>
             </HBox>
-        </HBox>
 
-    </top>
+        </top>
 
-    <center>
-        <StackPane alignment="CENTER">
-            <padding>
-                <Insets top="32" bottom="32" left="32" right="32">
-                </Insets>
-            </padding>
-            <VBox styleClass="card" maxWidth="400.0" spacing="16" alignment="TOP_LEFT">
-                <Label text="FORGET ACCOUNT" alignment="CENTER" maxWidth="Infinity"
-                       style="-fx-font-size: 36; -fx-margin-bottom: 24;">
-                </Label>
+        <center>
+            <StackPane alignment="CENTER">
+                <padding>
+                    <Insets top="32" bottom="32" left="32" right="32">
+                    </Insets>
+                </padding>
+                <VBox styleClass="card" maxWidth="400.0" spacing="16" alignment="TOP_LEFT">
+                    <Label text="FORGET ACCOUNT" alignment="CENTER" maxWidth="Infinity"
+                           style="-fx-font-size: 36; -fx-margin-bottom: 24;">
+                    </Label>
 
-                <VBox spacing="8">
-                    <Label text="Phone Number" />
-                    <TextField fx:id="phoneNumberField" promptText="Enter phone number"/>
+                    <VBox spacing="8">
+                        <Label text="Phone Number" />
+                        <TextField fx:id="phoneNumberField" promptText="Enter phone number"/>
+                    </VBox>
+
+                    <VBox spacing="8">
+                        <Label text="Identity Card" />
+                        <TextField fx:id="identityField" promptText="Enter identity card number"/>
+                    </VBox>
+
+                    <Region VBox.vgrow="ALWAYS"></Region>
+
+                    <Button text="GET ACCOUNT" styleClass="btn-primary" maxWidth="Infinity" onAction="#handleGetAccount">
+                        <VBox.margin>
+                            <Insets top="8"/>
+                        </VBox.margin>
+                    </Button>
+
+
                 </VBox>
+            </StackPane>
+        </center>
 
-                <VBox spacing="8">
-                    <Label text="Identity Card" />
-                    <TextField fx:id="identityField" promptText="Enter identity card number"/>
-                </VBox>
-
-                <Region VBox.vgrow="ALWAYS"></Region>
-
-                <Button text="GET ACCOUNT" styleClass="btn-primary" maxWidth="Infinity" onAction="#handleGetAccount">
-                    <VBox.margin>
-                        <Insets top="8"/>
-                    </VBox.margin>
-                </Button>
-
-
-            </VBox>
-        </StackPane>
-    </center>
-
-</BorderPane>
+    </BorderPane>
+</StackPane>
