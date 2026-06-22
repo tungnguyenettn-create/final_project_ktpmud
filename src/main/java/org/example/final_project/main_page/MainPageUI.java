@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import java.io.IOException;
-
+import javafx.scene.Parent;
 // 1. Extend Application so JavaFX knows how to launch it
 public class MainPageUI extends Application {
     private Stage stage;
@@ -35,7 +35,7 @@ public class MainPageUI extends Application {
     public void loadMainPage() throws IOException {
         // Double-check this path matches your src/main/resources folder structure
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainPage.fxml"));
-        BorderPane root = fxmlLoader.load();
+        Parent root = fxmlLoader.load();
 
         // Load CSS stylesheets
         String sharedCss = getClass().getResource("/css/shared.css").toExternalForm();

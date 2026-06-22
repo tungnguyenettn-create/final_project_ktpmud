@@ -3,11 +3,11 @@
     -bg-main: #edf1f5;
     -bg-card: #e8eaf1;
     -bg-alt: #ecf2f8;
-    -text-primary: #31456e;
+    -text-primary: #152a56;
     -text-secondary: #4B5563;
     -text-muted: #6B7280;
-    -accent-primary: #334155;
-    -accent-hover: #7a879e;
+    -accent-primary: #3f5b83;
+    -accent-hover: #748096;
     -border-color: #dde3f0;
 
     -fx-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -16,6 +16,51 @@
     -fx-font-size: 16;
 }
 
+.root .labeled, .root .text {
+    -fx-text-fill: -text-primary;
+    -fx-line-spacing: 5px; /* Thay thế cho line-height, tính bằng pixel chứ không dùng tỉ lệ 1.6 */
+}
+
+* {
+    -fx-padding: 0;
+}
+
+.h1, .h2, .h3, .h4 {
+    -fx-text-fill: -text-primary;
+    -fx-line-spacing: 2px;     /* Thay thế cho line-height */
+    -fx-padding: 0 0 16 0;     /* Mẹo giả lập margin-bottom: 16px (trên, phải, dưới, trái) */
+}
+
+/* 3. Chi tiết cho từng cấp độ tiêu đề */
+.h1 {
+    -fx-font-size: 48px;
+}
+
+.h2 {
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;     /* JavaFX CSS không hiểu số 600, chỉ hiểu từ khóa như bold, normal */
+    -fx-opacity: 0.85;         /* Giữ nguyên độ mờ */
+}
+
+.h3 {
+    -fx-font-size: 28px;
+}
+
+.h4 {
+    -fx-font-size: 22px;
+}
+
+/* 4. Định dạng cho đoạn văn (Paragraph) và chữ nhỏ (Small) */
+.p {
+    -fx-font-size: 16px;
+    -fx-text-fill: -text-secondary;
+    -fx-padding: 0 0 16 0;     /* margin-bottom cho đoạn văn */
+}
+
+.small {
+    -fx-font-size: 14px;
+    -fx-text-fill: -text-muted;
+}
 /* Typography - JavaFX looks at the class name globally or natively */
 Label {
     -fx-font-weight: bold;
@@ -23,23 +68,30 @@ Label {
 }
 
 /* Navbar */
+
 .navbar {
-    -fx-background-color: -bg-card;
-    -fx-border-color: -border-color;
-    -fx-border-width: 0 0 1 0;
+    -fx-background-color: #e5e8ef;
+    -fx-opacity: 0.85;
+
+    /* Padding trong JavaFX viết theo thứ tự: TRÊN - PHẢI - DƯỚI - TRÁI */
     -fx-padding: 16 32 16 32;
-    -fx-spacing: 24;
+
+    /* Giả lập border-bottom: chỉ hiện viền ở cạnh ĐÁY (cạnh thứ 3) */
+    -fx-border-color: transparent transparent -border-color transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-style: solid;
     -fx-alignment: CENTER_LEFT;
 }
-
 .nav-logo {
-    -fx-font-size: 24;
+    -fx-font-size: 24px;
+    -fx-text-fill: -accent-primary; /* Thay cho color */
+
+    /* JavaFX không hiểu số 620, bạn hãy dùng 'bold' hoặc 'semi-bold' nhé */
     -fx-font-weight: bold;
-    -fx-text-fill: -accent-primary;
-    -fx-padding: 0;
+
+    /* Thay thế cho text-decoration: none */
     -fx-underline: false;
 }
-
 .nav-logo:hover {
     -fx-text-fill: -accent-hover;
 }
@@ -48,41 +100,54 @@ Label {
     -fx-spacing: 24;
     -fx-alignment: CENTER;
 }
-
 .nav-btn {
     -fx-background-color: transparent;
-    -fx-text-fill: #4B5563;
-    -fx-font-size: 16;
-    -fx-font-weight: 500;
-    -fx-padding: 8 16 8 16;
-    -fx-border-color: transparent;
-    -fx-border-width: 0;
+    -fx-text-fill: -text-secondary;
+
+    /* Thêm đơn vị px cho chuẩn cấu trúc JavaFX */
+    -fx-font-size: 16px;
+    -fx-font-weight: normal; /* Tương đương mức 500 trên Web */
+
+    /* Tạo vùng bấm rộng rãi đúng ý bạn */
+    -fx-padding: 8px 16px 8px 16px;
     -fx-cursor: hand;
-    -fx-text-alignment: CENTER;
-    -fx-background-radius: 0;
+
+    /* MẸO QUAN TRỌNG: Đặt bo góc bằng 8 ngay từ đầu.
+       Vì JavaFX không có transition, nếu trạng thái bình thường bằng 0 mà hover bằng 8
+       thì khi rê chuột vào phần nền sẽ bị "giật" hình khối rất sắc cạnh. */
+    -fx-background-radius: 8px;
 }
 
+/* 3. Trạng thái Hover (Rê chuột vào) */
 .nav-btn:hover {
-    -fx-text-fill: #31456e;
-    -fx-background-color: rgba(49, 69, 110, 0.1);
-    -fx-background-radius: 8;
+    -fx-text-fill: -accent-primary;
+
+    /* Đồng bộ độ đậm chữ tăng lên theo mockup của bạn (font weight: 750) */
+    -fx-font-weight: bold;
 }
 
+/* 4. Trạng thái Pressed (Bấm giữ nút) */
 .nav-btn:pressed {
     -fx-text-fill: #334155;
-    -fx-scale-x: 0.98;
-    -fx-scale-y: 0.98;
-}
 
+    /* Hiệu ứng thu nhỏ nhẹ khi bấm của bạn rất đẹp, giữ nguyên */
+    -fx-scale-x: 0.96;
+    -fx-scale-y: 0.96;
+}
 /* Buttons */
 .btn-primary {
     -fx-background-color: -accent-primary;
     -fx-text-fill: white;
-    -fx-font-size: 16;
-    -fx-font-weight: bold;
-    -fx-padding: 12 24 12 24;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
+    -fx-font-size: 16px;
+
+    /* Bỏ hẳn font-weight nếu bản Web muốn để chữ mảnh mặc định */
+    /* -fx-font-weight: bold; */
+
+    -fx-padding: 12px 24px 12px 24px;
+
+    /* Chỉ cần background-radius để bo góc khối màu */
+    -fx-background-radius: 24px;
+    -fx-pref-width: 125px;
     -fx-cursor: hand;
     -fx-underline: false;
 }
@@ -91,6 +156,7 @@ Label {
     -fx-background-color: -accent-hover;
 }
 
+/* Hiệu ứng bấm lún của bạn rất tốt, giữ nguyên */
 .btn-primary:pressed {
     -fx-scale-x: 0.98;
     -fx-scale-y: 0.98;
@@ -99,18 +165,31 @@ Label {
 .btn-secondary {
     -fx-background-color: white;
     -fx-text-fill: -text-primary;
-    -fx-font-size: 16;
-    -fx-padding: 12 24 12 24;
+
+    /* Thêm px cho đúng chuẩn quy ước JavaFX */
+    -fx-font-size: 16px;
+    -fx-padding: 12px 24px 12px 24px;
+
     -fx-border-color: -border-color;
-    -fx-border-width: 1;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
+    -fx-border-width: 1px;
+
+    /* Giữ nguyên cặp đôi bo góc rất chuẩn của bạn */
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+
     -fx-cursor: hand;
     -fx-underline: false;
 }
 
 .btn-secondary:hover {
     -fx-border-color: -text-muted;
+    /* Các thuộc tính khác như màu nền trắng và màu chữ vẫn tự động giữ nguyên từ bản mặc định trên */
+}
+
+/* Thêm trạng thái này để đồng bộ trải nghiệm với nút Primary của bạn */
+.btn-secondary:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
 }
 
 /* Container */
@@ -131,22 +210,29 @@ Label {
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 6, 0.0, 0, 4);
 }
 
-/* Form Elements */
-TextField, PasswordField, TextArea, ComboBox {
-    -fx-font-size: 16;
-    -fx-padding: 12 16 12 16;
+/* --- Form Elements --- */
+.text-field, .password-field, .text-area, .combo-box {
+    -fx-font-size: 16px;
+    -fx-padding: 12px 16px 12px 16px;
+
     -fx-border-color: -border-color;
-    -fx-border-width: 1;
-    -fx-border-radius: 8;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+
     -fx-background-color: -bg-card;
-    -fx-background-radius: 8;
+    -fx-background-radius: 8px;
+
     -fx-text-fill: -text-primary;
 }
 
-TextField:focused, PasswordField:focused, TextArea:focused, ComboBox:focused {
+/* --- Trạng thái Focused (Khi click vào ô) --- */
+.text-field:focused, .password-field:focused, .text-area:focused, .combo-box:focused {
+    /* Giữ nguyên 1px để tránh bị giật khung, chỉ đổi màu sang màu chủ đạo giống Web */
     -fx-border-color: -accent-primary;
-    -fx-border-width: 2;
+    -fx-border-width: 1px;
 }
+
+
 
 /* Hyperlinks */
 Hyperlink {

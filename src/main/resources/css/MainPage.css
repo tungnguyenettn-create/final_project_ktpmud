@@ -1,39 +1,37 @@
-/* Main Page Styles */
+/* --- Giao diện tổng thể & Header --- */
+.root {
+    /* Nền linear-gradient giống bản web */
+    -fx-background-color: linear-gradient(to bottom, #ffffff 0%, #eaeaf0 40%, #dcdfe0 100%);
+}
 
 .header-section {
-    -fx-spacing: 48;
-    -fx-padding: 48 0 64 0;
+    -fx-spacing: 24;
+    -fx-padding: 24 0 64 0;
     -fx-alignment: CENTER_LEFT;
+    -fx-opacity: 0.8; /* Độ mờ header giống web */
 }
 
-.greeting-text {
-    -fx-font-size: 42;
+.h1, .greeting-text, .username-text {
+    -fx-font-size: 36px;
     -fx-font-weight: bold;
     -fx-text-fill: #31456e;
-}
-
-.username-text {
-    -fx-font-size: 42;
-    -fx-font-weight: bold;
-    -fx-text-fill: #31456e;
-}
-
-.balance-display {
-    -fx-padding: 12 32 12 32;
-    -fx-background-color: #e8eaf1;
-    -fx-border-color: #dde3f0;
-    -fx-border-width: 1;
-    -fx-border-radius: 24;
-    -fx-background-radius: 24;
 }
 
 .balance-text {
-    -fx-font-size: 24;
-    -fx-font-weight: bold;
+    /* Giả lập hiệu ứng kính mờ bằng màu bán trong suốt */
+    -fx-background-color: rgba(232, 234, 241, 0.7);
     -fx-text-fill: #31456e;
+    -fx-padding: 12px 32px;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-border-color: rgba(255, 255, 255, 0.5);
+    -fx-border-width: 1px;
+    -fx-border-radius: 24px;
+    -fx-background-radius: 24px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.05), 6, 0.0, 0, 4);
 }
 
-/* ScrollPane for Icon Grid */
+/* --- ScrollPane & Grid Icons --- */
 .icon-scroll-pane {
     -fx-background-color: transparent;
     -fx-padding: 0;
@@ -58,61 +56,62 @@
 }
 
 .grid-icons {
-    -fx-hgap: 48;
-    -fx-vgap: 48;
+    -fx-hgap: 100; /* Đổi gap thành 32px giống web */
+    -fx-vgap: 32;
     -fx-alignment: CENTER;
-    /* Forces it to wrap right after the 3rd item */
-    -fx-pref-wrap-length: 700;
-    -fx-padding: 5;
+    -fx-pref-wrap-length: 1000; /* max-width: 1000px */
+    -fx-padding: 10;
     -fx-background-color: transparent;
 }
 
+/* --- Từng Icon Item --- */
 .icon-item {
-    -fx-spacing: 24;
+    -fx-spacing: 16;
     -fx-alignment: TOP_CENTER;
-    -fx-pref-width: 260;
+    -fx-pref-width: 150;
     -fx-cursor: hand;
 }
 
 .icon-box {
-    -fx-pref-width: 200;
-    -fx-pref-height: 180;
-    -fx-background-color: #e8eaf1;
-    -fx-border-color: #dde3f0;
-    -fx-border-width: 1;
-    -fx-border-radius: 24;
-    -fx-background-radius: 24;
+    /* Thu nhỏ kích thước box giống bản web: 120x120 */
+    -fx-pref-width: 120px;
+    -fx-pref-height: 120px;
+
+    /* Giả lập Glassmorphism */
+    -fx-background-color: rgba(232, 234, 241, 0.7);
+    -fx-border-color: rgba(255, 255, 255, 0.5);
+    -fx-border-width: 1px;
+    -fx-border-radius: 24px;
+    -fx-background-radius: 24px;
     -fx-alignment: CENTER;
+
+    /* Box shadow */
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 6, 0.0, 0, 4);
 }
 
-.icon-item:hover .icon-box {
-    -fx-background-color: #334155;
+/* Hiệu ứng Hover - Đẩy khối lên trên & đổi màu */
+.icon-item:hover .icon-box,
+.icon-item:focused .icon-box {
+    -fx-background-color: -accent-primary; /* Thay bằng màu var(--accent-primary) của bạn */
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 15, 0.0, 0, 10);
-    /* Moves the icon box up by 5 pixels on hover */
-    -fx-translate-y: -8;
+    -fx-translate-y: -8px; /* Tương đương transform: translateY(-8px) */
 }
 
 .icon-svg {
     -fx-fill: transparent;
-    -fx-stroke: #333333;
+    -fx-stroke: #333333; /* Giữ nguyên màu var(--accent-primary) tương ứng */
     -fx-stroke-line-cap: round;
     -fx-stroke-line-join: round;
     -fx-stroke-width: 1.5;
 }
 
 .icon-item:hover .icon-svg {
-    -fx-stroke: white;
+    -fx-stroke: white; /* Đổi icon sang trắng khi hover */
 }
 
 .icon-label {
-    -fx-font-size: 18;
+    -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-text-fill: #31456e;
-    -fx-padding: 0;
-    -fx-underline: false;
 }
 
-.icon-item:hover .icon-label {
-    -fx-text-fill: #31456e;
-}
