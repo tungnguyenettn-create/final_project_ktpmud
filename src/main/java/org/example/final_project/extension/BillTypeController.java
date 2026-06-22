@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.Node;
 import javafx.stage.Stage;
@@ -18,6 +19,7 @@ public class BillTypeController implements Initializable {
 
     // Giu lai 1 reference toi Stage qua event dau tien nhan duoc
     private Stage stage;
+    @FXML private Label navLogo;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {}
@@ -53,23 +55,44 @@ public class BillTypeController implements Initializable {
         }
     }
 
-    // --- NAVIGATION ---
-    @FXML private void handleNavHome(MouseEvent e)     { switchTo(e, "/fxml/MainPage.fxml",     "Main Page",     "/css/MainPage.css"); }
-    @FXML private void handleNavNews(MouseEvent e)     { switchTo(e, "/fxml/News.fxml",          "News Page",     "/css/news.css"); }
-    @FXML private void handleNavBranches(MouseEvent e) { switchTo(e, "/fxml/Branchs.fxml",       "Branches Page", "/css/branchs.css"); }
-
-    @FXML private void handleNavProfile(MouseEvent e) {
-        boolean auth = AppSession.getInstance().isAuthenticated();
-        switchTo(e,
-                auth ? "/fxml/UserInformation.fxml" : "/fxml/LoginPage.fxml",
-                "Profile",
-                auth ? "/css/user_profile.css"      : "/css/LoginPage.css"
-        );
+    @FXML
+    private void handleNavHome(){
+        switchTo("/fxml/MainPage.fxml", "Main Page", "/css/MainPage.css");
     }
 
-    private void switchTo(MouseEvent e, String fxml, String title, String css) {
-        Stage s = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        NavigationManager.setPrimaryStage(s);
+    // Triggered by the Home Button
+    @FXML
+    private void handleNavHomeBtn() {
+        switchTo("/fxml/MainPage.fxml", "Main Page", "/css/MainPage.css");
+    }
+
+    // Triggered by the News Button
+    @FXML
+    private void handleNavNews() {
+        switchTo("/fxml/News.fxml", "News Page", "/css/news.css");
+    }
+
+    // Triggered by the Branches Button
+    @FXML
+    private void handleNavBranches() {
+        switchTo("/fxml/Branch.fxml", "Branches Page", "/css/branchs.css");
+    }
+
+    // ĐÃ SỬA: Xóa bỏ tham số (ActionEvent event) ở đây
+    @FXML
+    private void handleNavProfile(){
+        switchTo("/fxml/UserInformation.fxml", "User Profile Page", "/css/user_profile.css");
+    }
+
+    // Hàm Helper chuyển scene an toàn
+    private void switchTo(String fxml, String title, String css) {
+        if (navLogo == null || navLogo.getScene() == null) {
+            System.err.println("Cannot switch scene: navLogo or Scene is null.");
+            return;
+        }
+
+        Stage stage = (Stage) navLogo.getScene().getWindow();
+        NavigationManager.setPrimaryStage(stage);
         NavigationManager.switchScene(fxml, title, "/css/shared.css", css);
     }
 }

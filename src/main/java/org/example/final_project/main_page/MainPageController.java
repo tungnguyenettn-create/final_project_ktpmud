@@ -96,7 +96,7 @@ public class MainPageController implements Initializable {
     // --- NAVIGATION ---
     @FXML private void handleNavHome()     { switchTo("/fxml/MainPage.fxml",       "Main Page",        "/css/MainPage.css"); }
     @FXML private void handleNavNews()     { switchTo("/fxml/News.fxml",            "News Page",        "/css/news.css"); }
-    @FXML private void handleNavBranches() { switchTo("/fxml/Branchs.fxml",         "Branches Page",    "/css/branchs.css"); }
+    @FXML private void handleNavBranches() { switchTo("/fxml/Branch.fxml",         "Branches Page",    "/css/branchs.css"); }
     @FXML private void handleLogin()       { switchTo("/fxml/LoginPage.fxml",       "Login Page",       "/css/LoginPage.css"); }
 
     @FXML private void handleNavProfile() {

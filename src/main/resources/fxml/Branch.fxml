@@ -20,17 +20,17 @@
             <padding>
                 <Insets top="16" bottom="16" left="32" right="32"/>
             </padding>
-            <Label text="36Bank" styleClass="nav-logo" onMouseClicked="#handleNavHome"/>
+
+            <Label fx:id="navLogo" text="36BANK" styleClass="nav-logo" onMouseClicked="#handleNavHome" style="-fx-cursor: hand;"/>
+
             <Region HBox.hgrow="ALWAYS"/>
             <HBox spacing="24" styleClass="nav-links" alignment="CENTER">
-                <Button text="Home" styleClass="nav-btn"/>
-                <Button text="News" styleClass="nav-btn"/>
-                <Button text="Branches" styleClass="nav-btn"/>
-                <Button text="Login" styleClass="btn-primary">
-                    <padding>
-                        <Insets top="8" bottom="8" left="16" right="16"/>
-                    </padding>
-                </Button>
+
+                <Button text="Home" styleClass="nav-btn" onAction="#handleNavHome"/>
+                <Button text="News" styleClass="nav-btn" onAction="#handleNavNews" />
+                <Button text="Branches" styleClass="nav-btn" onAction="#handleNavBranches"/>
+
+
             </HBox>
         </HBox>
     </top>

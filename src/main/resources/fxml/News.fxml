@@ -29,13 +29,9 @@
 
                 <Button text="Home" styleClass="nav-btn" onAction="#handleNavHome"/>
 
-                <Button text="News" styleClass="nav-btn"/>
-                <Button text="Branches" styleClass="nav-btn"/>
-                <Button text="Login" styleClass="btn-primary">
-                    <padding>
-                        <Insets top="8" bottom="8" left="16" right="16"/>
-                    </padding>
-                </Button>
+                <Button text="News" styleClass="nav-btn" onAction="#handleNavNews"/>
+                <Button text="Branches" styleClass="nav-btn" onAction="#handleNavBranches"/>
+
             </HBox>
         </HBox>
     </top>

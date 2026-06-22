@@ -23,12 +23,12 @@
             <padding>
                 <Insets top="16" bottom="16" left="32" right="32"/>
             </padding>
-            <Label text="36BANK" styleClass="nav-logo" onMouseClicked="#handleNavHome"/>
+            <Label fx:id="navLogo" text="36BANK" styleClass="nav-logo" onMouseClicked="#handleNavHome"/>
             <Region HBox.hgrow="ALWAYS"/>
             <HBox spacing="24" styleClass="nav-links">
-                <Button text="Home" styleClass="nav-btn"/>
-                <Button text="News" styleClass="nav-btn"/>
-                <Button text="Branches" styleClass="nav-btn"/>
+                <Button text="Home" styleClass="nav-btn" onAction="#handleNavHome"/>
+                <Button text="News" styleClass="nav-btn" onAction="#handleNavNews" />
+                <Button text="Branches" styleClass="nav-btn" onAction="#handleNavBranches"/>
                 <Button text="Profile" styleClass="nav-btn"/>
             </HBox>
         </HBox>
@@ -43,8 +43,8 @@
             <VBox maxWidth="800.0" spacing="24" alignment="TOP_LEFT">
 
                 <HBox spacing="24">
-                    <Button text="User Information" styleClass="btn-primary"/>
-                    <Button text="Account Information" styleClass="btn-secondary"/>
+                    <Button text="User Information" styleClass="btn-secondary" onMouseClicked="#handleUserInformation"/>
+                    <Button text="Account Information" styleClass="btn-primary" onMouseClicked="#handleAccountInformation"/>
                 </HBox>
 
                 <VBox styleClass="card" spacing="24" alignment="TOP_LEFT">

@@ -3,6 +3,7 @@ package org.example.final_project.user_profile;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.final_project.AppSession;
@@ -20,6 +21,8 @@ public class UserInformationController implements Initializable {
     @FXML private TextField IdentityField;
     @FXML private TextField PhoneField;
     @FXML private TextField AddressField;
+    @FXML private Label navLogo;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -87,11 +90,12 @@ public class UserInformationController implements Initializable {
     // --- NAVIGATION ---
     @FXML private void handleNavHome()     { switchTo("/fxml/MainPage.fxml",       "Main Page",     "/css/MainPage.css"); }
     @FXML private void handleNavNews()     { switchTo("/fxml/News.fxml",            "News Page",     "/css/news.css"); }
-    @FXML private void handleNavBranches() { switchTo("/fxml/Branchs.fxml",         "Branches Page", "/css/branchs.css"); }
+    @FXML private void handleNavBranches() { switchTo("/fxml/Branch.fxml",         "Branches Page", "/css/branchs.css"); }
     @FXML private void handleNavProfile()  { switchTo("/fxml/UserInformation.fxml", "Profile Page",  "/css/user_profile.css"); }
-    @FXML private void handleAccountInformation() { switchTo("/fxml/AccountInformation.fxml", "Account Information Page", "/css/user_profile.css");}
+    @FXML private void handleUserInformation() {switchTo("/fxml/UserInformation.fxml", "Profile Page",  "/css/user_profile.css");}
+    @FXML private void handleAccountInformation() {switchTo("/fxml/AccountInformation.fxml", "Profile Page",  "/css/user_profile.css");}
     private void switchTo(String fxml, String title, String css) {
-        Stage stage = (Stage) NameField.getScene().getWindow();
+        Stage stage = (Stage) navLogo.getScene().getWindow();
         NavigationManager.setPrimaryStage(stage);
         NavigationManager.switchScene(fxml, title, "/css/shared.css", css);
     }

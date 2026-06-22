@@ -25,10 +25,10 @@
             <Label fx:id="navLogo" text="36BANK" styleClass="nav-logo" onMouseClicked="#handleNavHome"/>
             <Region HBox.hgrow="ALWAYS"/>
             <HBox spacing="24" styleClass="nav-links">
-                <Button text="Home" styleClass="nav-btn"/>
-                <Button text="News" styleClass="nav-btn"/>
-                <Button text="Branches" styleClass="nav-btn"/>
-                <Button text="Profile" styleClass="nav-btn"/>
+                <Button text="Home" styleClass="nav-btn" onAction="#handleNavHome"/>
+                <Button text="News" styleClass="nav-btn" onAction="#handleNavNews"/>
+                <Button text="Branches" styleClass="nav-btn" onAction="#handleNavBranches"/>
+                <Button text="Profile" styleClass="nav-btn" onAction="#handleNavProfile"/>
             </HBox>
         </HBox>
     </top>

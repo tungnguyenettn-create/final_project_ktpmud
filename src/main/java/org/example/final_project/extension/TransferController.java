@@ -52,7 +52,7 @@ public class TransferController {
     }
 
     @FXML
-    private void handleTransfer(ActionEvent event) {
+    private void handleTransfer() {
         String selectedBank   = bankSelect.getValue();
         String destAccount    = accountNumberField.getText().trim();
         String amountRaw      = amountField.getText().trim();
@@ -134,7 +134,9 @@ public class TransferController {
     private void handleNavHome() {
         switchTo("/fxml/MainPage.fxml", "Main Page", "/css/MainPage.css");
     }
-
+    @FXML private void handleNavNews()     { switchTo("/fxml/News.fxml",            "News Page",        "/css/news.css"); }
+    @FXML private void handleNavBranches() { switchTo("/fxml/Branch.fxml",         "Branches Page",    "/css/branchs.css"); }
+    @FXML private void handleNavProfile()      { switchTo("/fxml/UserInformation.fxml", "Profile Page",  "/css/user_profile.css"); }
     // 3. The helper method that actually performs the transition
     private void switchTo(String fxml, String title, String css) {
         // Get the current window using the navLogo

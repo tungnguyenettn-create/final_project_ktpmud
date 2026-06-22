@@ -21,6 +21,7 @@ public class BillController {
     @FXML private ComboBox<String> providerSelect;
     @FXML private TextField amountField;
     @FXML private Label lblMessage;
+    @FXML private Label navLogo;
 
     // billType duoc truyen vao tu BillTypeController khi chuyen trang
     private String billType;
@@ -137,9 +138,55 @@ public class BillController {
         t.start();
     }
 
+    // =========================================================
+    // --- KHU VỰC CÁC HÀM ĐIỀU HƯỚNG (NAVIGATION) ---
+    // =========================================================
+
+    // Khi thanh toán thành công, hàm này gọi thẳng hàm switchTo
+    @FXML
     private void goToMainPage() {
-        Stage stage = (Stage) amountField.getScene().getWindow();
+        switchTo("/fxml/MainPage.fxml", "Main Page", "/css/MainPage.css");
+    }
+
+    // Triggered by clicking the 36Bank Logo
+    @FXML
+    private void handleNavHome(){
+        switchTo("/fxml/MainPage.fxml", "Main Page", "/css/MainPage.css");
+    }
+
+    // Triggered by the Home Button
+    @FXML
+    private void handleNavHomeBtn() {
+        switchTo("/fxml/MainPage.fxml", "Main Page", "/css/MainPage.css");
+    }
+
+    // Triggered by the News Button
+    @FXML
+    private void handleNavNews() {
+        switchTo("/fxml/News.fxml", "News Page", "/css/news.css");
+    }
+
+    // Triggered by the Branches Button
+    @FXML
+    private void handleNavBranches() {
+        switchTo("/fxml/Branch.fxml", "Branches Page", "/css/branchs.css");
+    }
+
+    // ĐÃ SỬA: Xóa bỏ tham số (ActionEvent event) ở đây
+    @FXML
+    private void handleNavProfile(){
+        switchTo("/fxml/UserInformation.fxml", "User Profile Page", "/css/user_profile.css");
+    }
+
+    // Hàm Helper chuyển scene an toàn
+    private void switchTo(String fxml, String title, String css) {
+        if (navLogo == null || navLogo.getScene() == null) {
+            System.err.println("Cannot switch scene: navLogo or Scene is null.");
+            return;
+        }
+
+        Stage stage = (Stage) navLogo.getScene().getWindow();
         NavigationManager.setPrimaryStage(stage);
-        NavigationManager.switchScene("/fxml/MainPage.fxml", "Main Page", "/css/shared.css", "/css/MainPage.css");
+        NavigationManager.switchScene(fxml, title, "/css/shared.css", css);
     }
 }

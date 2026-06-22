@@ -3,6 +3,7 @@ package org.example.final_project.user_profile;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.final_project.AppSession;
@@ -19,6 +20,8 @@ public class AccountInformationController implements Initializable {
     @FXML private TextField AccountField;
     @FXML private TextField DateField;
     @FXML private TextField BalanceField;
+    @FXML private Label navLogo;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -79,11 +82,12 @@ public class AccountInformationController implements Initializable {
     // --- NAVIGATION ---
     @FXML private void handleNavHome()         { switchTo("/fxml/MainPage.fxml",       "Main Page",     "/css/MainPage.css"); }
     @FXML private void handleNavNews()         { switchTo("/fxml/News.fxml",            "News Page",     "/css/news.css"); }
-    @FXML private void handleNavBranches()     { switchTo("/fxml/Branchs.fxml",         "Branches Page", "/css/branchs.css"); }
+    @FXML private void handleNavBranches()     { switchTo("/fxml/Branch.fxml",         "Branches Page", "/css/branchs.css"); }
     @FXML private void handleNavProfile()      { switchTo("/fxml/UserInformation.fxml", "Profile Page",  "/css/user_profile.css"); }
     @FXML private void handleUserInformation() {switchTo("/fxml/UserInformation.fxml", "Profile Page",  "/css/user_profile.css");}
+    @FXML private void handleAccountInformation() {switchTo("/fxml/AccountInformation.fxml", "Profile Page",  "/css/user_profile.css");}
     private void switchTo(String fxml, String title, String css) {
-        Stage stage = (Stage) AccountField.getScene().getWindow();
+        Stage stage = (Stage) navLogo.getScene().getWindow();
         NavigationManager.setPrimaryStage(stage);
         NavigationManager.switchScene(fxml, title, "/css/shared.css", css);
     }
