@@ -20,7 +20,7 @@
             <padding>
                 <Insets top="16" bottom="16" left="32" right="32"/>
             </padding>
-            <Label text="SecureBank" styleClass="nav-logo"/>
+            <Label text="36Bank" styleClass="nav-logo" onMouseClicked="#handleNavHome"/>
             <Region HBox.hgrow="ALWAYS"/>
             <HBox spacing="24" styleClass="nav-links" alignment="CENTER">
                 <Button text="Home" styleClass="nav-btn"/>

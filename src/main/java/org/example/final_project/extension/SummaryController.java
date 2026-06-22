@@ -3,7 +3,10 @@ package org.example.final_project.extension;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import org.example.final_project.AppSession;
+import org.example.final_project.NavigationManager;
 import org.example.final_project.api.HistoryHandling;
 
 import java.time.LocalDate;
@@ -20,6 +23,25 @@ public class SummaryController {
 
     @FXML
     private BarChart<String, Number> monthsChart;
+
+    @FXML
+    private Label navLogo;
+
+    // 2. The method triggered by clicking the Logo (or the Home button)
+    @FXML
+    private void handleNavHome() {
+        switchTo("/fxml/MainPage.fxml", "Main Page", "/css/MainPage.css");
+    }
+
+    // 3. The helper method that actually performs the transition
+    private void switchTo(String fxml, String title, String css) {
+        // Get the current window using the navLogo
+        Stage stage = (Stage) navLogo.getScene().getWindow();
+        NavigationManager.setPrimaryStage(stage);
+
+        // Tell the NavigationManager to switch the scene
+        NavigationManager.switchScene(fxml, title, "/css/shared.css", css);
+    }
 
     @FXML
     public void initialize() {

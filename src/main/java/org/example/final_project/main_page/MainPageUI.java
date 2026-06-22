@@ -3,6 +3,9 @@ package org.example.final_project.main_page;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.animation.TranslateTransition;
+import javafx.util.Duration;
+import javafx.scene.layout.VBox;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -11,6 +14,7 @@ import javafx.scene.Parent;
 public class MainPageUI extends Application {
     private Stage stage;
     private Scene scene;
+
 
     // Zero-argument constructor is required by JavaFX launch mechanism
     public MainPageUI() {
@@ -30,6 +34,7 @@ public class MainPageUI extends Application {
             e.printStackTrace();
             System.err.println("Failed to load the FXML or CSS files. Check your resource paths.");
         }
+        
     }
 
     public void loadMainPage() throws IOException {
@@ -48,6 +53,7 @@ public class MainPageUI extends Application {
         stage.setTitle("36BANK - Home");
         stage.show();
     }
+
 
     public Scene getScene() {
         return scene;
