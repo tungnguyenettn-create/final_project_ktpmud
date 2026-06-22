@@ -12,68 +12,79 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.final_project.extension.NewsController">
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="org.example.final_project.extension.NewsController"
+           prefWidth="1280.0" prefHeight="800.0"
+           style="-fx-background-color: linear-gradient(to bottom, #ffffff 0%, #eaeaf0 40%, #dcdfe0 100%);">
 
-    <top>
-        <HBox styleClass="navbar" spacing="24">
-            <padding>
-                <Insets top="16" bottom="16" left="32" right="32"/>
-            </padding>
+    <Region style="-fx-background-image: url('https://i.pinimg.com/1200x/ee/26/fe/ee26fe3a94febbbac011ed6ee677ba7f.jpg');
+                   -fx-background-size: cover;
+                   -fx-background-position: center center;
+                   -fx-background-repeat: no-repeat;" />
 
-            <Label fx:id="navLogo" text="36BANK" styleClass="nav-logo" onMouseClicked="#handleNavHome" style="-fx-cursor: hand;"/>
+    <Label text="IMAGE SOURCE: Words Bubble Up Like Soda Pop - Kyōhei Ishiguro"
+           StackPane.alignment="BOTTOM_LEFT"
+           style="-fx-font-size: 10px; -fx-font-weight: 300; -fx-text-fill: #31456e; -fx-opacity: 0.3; -fx-padding: 0 0 10 15;"/>
 
-            <Region HBox.hgrow="ALWAYS"/>
-            <HBox spacing="24" styleClass="nav-links" alignment="CENTER">
+    <BorderPane prefWidth="1150.0" prefHeight="720.0"
+                style="-fx-background-color: rgba(255, 255, 255, 0.6); -fx-background-radius: 24px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 20, 0, 0, 10);">
+        <top>
+            <HBox styleClass="navbar" spacing="24">
+                <padding>
+                    <Insets top="16" bottom="16" left="32" right="32"/>
+                </padding>
 
-                <Button text="Home" styleClass="nav-btn" onAction="#handleNavHome"/>
+                <Label fx:id="navLogo" text="36BANK" styleClass="nav-logo" onMouseClicked="#handleNavHome" style="-fx-cursor: hand;"/>
 
-                <Button text="News" styleClass="nav-btn" onAction="#handleNavNews"/>
-                <Button text="Branches" styleClass="nav-btn" onAction="#handleNavBranches"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <HBox spacing="24" styleClass="nav-links" >
+                    <Button text="Home" styleClass="nav-btn" onAction="#handleNavHome"/>
+                    <Button text="News" styleClass="nav-btn" onAction="#handleNavNews"/>
+                    <Button text="Branches" styleClass="nav-btn" onAction="#handleNavBranches"/>
 
+                </HBox>
             </HBox>
-        </HBox>
-    </top>
+        </top>
 
-    <center>
-        <StackPane alignment="CENTER">
-            <padding>
-                <Insets top="32" bottom="32" left="32" right="32"/>
-            </padding>
+        <center>
+            <StackPane alignment="CENTER">
+                <padding>
+                    <Insets top="32" bottom="32" left="32" right="32"/>
+                </padding>
 
-            <VBox maxWidth="1100.0" spacing="24" alignment="TOP_CENTER">
-                <Label text="Financial News" styleClass="text-title-large" maxWidth="Infinity" alignment="TOP_LEFT"/>
+                <VBox maxWidth="1100.0" spacing="24" alignment="TOP_CENTER">
+                    <Label text="Financial News" styleClass="text-title-large" maxWidth="Infinity" alignment="TOP_LEFT"/>
 
-                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
-                            style="-fx-background-color: transparent; -fx-background: transparent;">
+                    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                                style="-fx-background-color: transparent; -fx-background: transparent;">
 
-                    <FlowPane hgap="24" vgap="24">
-                        <padding>
-                            <Insets bottom="16" right="16"/>
-                        </padding>
-
-                        <VBox styleClass="card" prefWidth="320.0" spacing="12">
+                        <FlowPane hgap="24" vgap="24">
                             <padding>
-                                <Insets top="24" bottom="24" left="24" right="24"/>
+                                <Insets bottom="16" right="16"/>
                             </padding>
-                            <Label text="Market Update" styleClass="text-desc-medium" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
-                            <Label text="Latest trends in the financial market show a steady growth." wrapText="true"/>
-                            <Hyperlink text="Read more" style="-fx-text-fill: -accent-primary; -fx-font-weight: bold;"/>
-                        </VBox>
 
-                        <VBox styleClass="card" prefWidth="320.0" spacing="12">
-                            <padding>
-                                <Insets top="24" bottom="24" left="24" right="24"/>
-                            </padding>
-                            <Label text="Interest Rates" styleClass="text-desc-medium" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
-                            <Label text="Central bank announces new interest rates for the quarter." wrapText="true"/>
-                            <Hyperlink text="Read more" style="-fx-text-fill: -accent-primary; -fx-font-weight: bold;"/>
-                        </VBox>
+                            <VBox styleClass="card" prefWidth="320.0" spacing="12">
+                                <padding>
+                                    <Insets top="24" bottom="24" left="24" right="24"/>
+                                </padding>
+                                <Label text="Market Update" styleClass="text-desc-medium" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                                <Label text="Latest trends in the financial market show a steady growth." wrapText="true"/>
+                                <Hyperlink text="Read more" style="-fx-text-fill: -accent-primary; -fx-font-weight: bold;"/>
+                            </VBox>
 
-                    </FlowPane>
-                </ScrollPane>
-            </VBox>
-        </StackPane>
-    </center>
-</BorderPane>
+                            <VBox styleClass="card" prefWidth="320.0" spacing="12">
+                                <padding>
+                                    <Insets top="24" bottom="24" left="24" right="24"/>
+                                </padding>
+                                <Label text="Interest Rates" styleClass="text-desc-medium" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                                <Label text="Central bank announces new interest rates for the quarter." wrapText="true"/>
+                                <Hyperlink text="Read more" style="-fx-text-fill: -accent-primary; -fx-font-weight: bold;"/>
+                            </VBox>
+
+                        </FlowPane>
+                    </ScrollPane>
+                </VBox>
+            </StackPane>
+        </center>
+    </BorderPane>
+</StackPane>
