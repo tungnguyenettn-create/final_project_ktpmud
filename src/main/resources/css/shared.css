@@ -10,7 +10,7 @@
     -accent-hover: #748096;
     -border-color: #dde3f0;
 
-    -fx-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -fx-font-family: Arial;
     -fx-background-color: -bg-main; /* Just call the variable directly */
     -fx-text-fill: -text-primary;
     -fx-font-size: 16;
@@ -28,7 +28,7 @@
 .h1, .h2, .h3, .h4 {
     -fx-text-fill: -text-primary;
     -fx-line-spacing: 2px;     /* Thay thế cho line-height */
-    -fx-padding: 0 0 16 0;     /* Mẹo giả lập margin-bottom: 16px (trên, phải, dưới, trái) */
+    -fx-padding: 0 0 12 0;     /* Mẹo giả lập margin-bottom: 16px (trên, phải, dưới, trái) */
 }
 
 /* 3. Chi tiết cho từng cấp độ tiêu đề */
@@ -65,6 +65,8 @@
 Label {
     -fx-font-weight: bold;
     -fx-text-fill: -text-primary;
+    -fx-padding: 0 0 8 0;
+    -fx-opacity: 0.85;
 }
 
 /* Navbar */
@@ -196,7 +198,7 @@ Label {
 .container {
     -fx-max-width: 1200;
     -fx-padding: 32;
-    -fx-spacing: 32;
+    -fx-spacing: 16;
 }
 
 /* Cards */
@@ -237,9 +239,10 @@ Label {
 /* Hyperlinks */
 Hyperlink {
     -fx-padding: 0;
-    -fx-text-fill: -text-secondary;
+    -fx-text-fill: #3232b5;
     -fx-underline: false;
     -fx-cursor: hand;
+    -fx-font-size: 14;
 }
 
 Hyperlink:hover {

@@ -5,17 +5,11 @@
 }
 
 .header-section {
-    -fx-spacing: 24;
-    -fx-padding: 24 0 64 0;
+    -fx-padding: 24 0 12 0;
     -fx-alignment: CENTER_LEFT;
     -fx-opacity: 0.8; /* Độ mờ header giống web */
 }
 
-.h1, .greeting-text, .username-text {
-    -fx-font-size: 36px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #31456e;
-}
 
 .balance-text {
     /* Giả lập hiệu ứng kính mờ bằng màu bán trong suốt */

@@ -125,10 +125,28 @@ public class MainPageController implements Initializable {
             switchTo("/fxml/LoginPage.fxml", "Login Page", "/css/LoginPage.css");
         }
     }
-
     private void switchTo(String fxml, String title, String css) {
+        long totalStart = System.nanoTime();
+
+        // Step 1: Lấy Stage hiện tại từ button
+        long s1 = System.nanoTime();
         Stage stage = (Stage) loginBtn.getScene().getWindow();
+        long e1 = System.nanoTime();
+        System.out.printf("[LOG] Step 1 (Get Stage): %.2f ms%n", (e1 - s1) / 1_000_000.0);
+
+        // Step 2: Đặt Primary Stage trong NavigationManager
+        long s2 = System.nanoTime();
         NavigationManager.setPrimaryStage(stage);
+        long e2 = System.nanoTime();
+        System.out.printf("[LOG] Step 2 (Set Primary Stage): %.2f ms%n", (e2 - s2) / 1_000_000.0);
+
+        // Step 3: Chuyển đổi giao diện (Load FXML, CSS, Init Controller)
+        long s3 = System.nanoTime();
         NavigationManager.switchScene(fxml, title, "/css/shared.css", css);
+        long e3 = System.nanoTime();
+        System.out.printf("[LOG] Step 3 (Switch Scene): %.2f ms%n", (e3 - s3) / 1_000_000.0);
+
+        long totalEnd = System.nanoTime();
+        System.out.printf("========== TOTAL TIME: %.2f ms ==========%n", (totalEnd - totalStart) / 1_000_000.0);
     }
 }

@@ -29,7 +29,7 @@
            style="-fx-font-size: 10px; -fx-font-weight: 300; -fx-text-fill: #31456e; -fx-opacity: 0.3; -fx-padding: 0 0 10 15;"/>
 
     <BorderPane prefWidth="1150.0" prefHeight="720.0"
-                style="-fx-background-color: rgba(255, 255, 255, 0.6); -fx-background-radius: 24px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 20, 0, 0, 10);">
+                style="-fx-background-color: rgba(255, 255, 255, 0.6);  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 20, 0, 0, 10);">
 
         <top>
             <HBox styleClass="navbar" spacing="32" alignment="CENTER_LEFT">
@@ -41,25 +41,25 @@
                 <Region HBox.hgrow="ALWAYS"/>
 
                 <HBox spacing="28" styleClass="nav-links" alignment="CENTER_RIGHT">
-                    <Button text="Home" styleClass="nav-btn"/>
-                    <Button text="News" styleClass="nav-btn"/>
-                    <Button text="Branches" styleClass="nav-btn"/>
-                    <Button text="Profile" styleClass="nav-btn"/>
-                    <Button fx:id="loginBtn" text="LOGIN" styleClass="btn-primary"/>
+                    <Button text="Home" styleClass="nav-btn" />
+                    <Button text="News" styleClass="nav-btn" onAction="#handleNavNews"/>
+                    <Button text="Branches" styleClass="nav-btn" onAction="#handleNavBranches"/>
+                    <Button text="Profile" styleClass="nav-btn" onAction="#handleNavProfile"/>
+                    <Button fx:id="loginBtn" text="LOGIN" styleClass="btn-primary" onAction="#handleLogin"/>
                 </HBox>
             </HBox>
         </top>
 
         <center>
-            <VBox styleClass="container" spacing="40">
+            <VBox styleClass="container" >
                 <padding>
                     <Insets top="10" bottom="40" left="48" right="48"/>
                 </padding>
 
                 <HBox styleClass="header-section" alignment="CENTER_LEFT">
-                    <VBox spacing="8" HBox.hgrow="ALWAYS">
-                        <Label fx:id="greetingLabel" text="GOOD MORNING" styleClass="greeting-text"/>
-                        <Label fx:id="userNameLabel" text="DUONG PHAN QUANG BACH" styleClass="username-text" visible="true" managed="true"/>
+                    <VBox  HBox.hgrow="ALWAYS">
+                        <Label fx:id="greetingLabel" text="GOOD MORNING" styleClass="h2"/>
+                        <Label fx:id="userNameLabel" text="DUONG PHAN QUANG BACH" styleClass="h2" visible="true" managed="true"/>
                     </VBox>
 
                     <Region HBox.hgrow="ALWAYS"/>

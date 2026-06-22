@@ -1,0 +1,10 @@
+.root {
+    /* Nền linear-gradient giống bản web */
+    -fx-background-color: linear-gradient(to bottom, #ffffff 0%, #eaeaf0 40%, #dcdfe0 100%);
+}
+
+.header-section {
+    -fx-padding: 24 0 12 0;
+    -fx-alignment: CENTER_LEFT;
+    -fx-opacity: 0.8; /* Độ mờ header giống web */
+}

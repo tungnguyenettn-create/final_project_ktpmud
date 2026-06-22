@@ -38,7 +38,7 @@ public class BillTypeController implements Initializable {
             billController.setBillType(billType);
 
             Stage s = (Stage) ((Node) e.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root, 1200, 800);
             scene.getStylesheets().addAll(
                     getClass().getResource("/css/shared.css").toExternalForm(),
                     getClass().getResource("/css/bill.css").toExternalForm()
