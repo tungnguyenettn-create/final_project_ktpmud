@@ -2,10 +2,7 @@ package org.example.final_project.extension;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.concurrent.Task;
 import javafx.stage.Stage;
 import org.example.final_project.AppSession;
@@ -128,6 +125,24 @@ public class TransferController {
         descriptionField.clear();
         if (!bankSelect.getItems().isEmpty())
             bankSelect.getSelectionModel().selectFirst();
+    }
+    @FXML
+    private Label navLogo;
+
+    // 2. The method triggered by clicking the Logo (or the Home button)
+    @FXML
+    private void handleNavHome() {
+        switchTo("/fxml/MainPage.fxml", "Main Page", "/css/MainPage.css");
+    }
+
+    // 3. The helper method that actually performs the transition
+    private void switchTo(String fxml, String title, String css) {
+        // Get the current window using the navLogo
+        Stage stage = (Stage) navLogo.getScene().getWindow();
+        NavigationManager.setPrimaryStage(stage);
+
+        // Tell the NavigationManager to switch the scene
+        NavigationManager.switchScene(fxml, title, "/css/shared.css", css);
     }
 
     private void goToMainPage() {

@@ -33,7 +33,7 @@
                 <padding>
                     <Insets top="20" bottom="20" left="48" right="48"/>
                 </padding>
-                <Label text="36BANK" styleClass="nav-logo" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #31456e;"/>
+                <Label fx:id="navLogo" text="36BANK" styleClass="nav-logo" onMouseClicked="#handleNavHome"/>
 
                 <Region HBox.hgrow="ALWAYS"/>
 
