@@ -21,7 +21,7 @@
             <padding>
                 <Insets top="16" bottom="16" left="32" right="32"/>
             </padding>
-            <Label text="SecureBank" styleClass="nav-logo"/>
+            <Label text="36BANK" styleClass="nav-logo" />
             <Region HBox.hgrow="ALWAYS"/>
             <HBox spacing="24" styleClass="nav-links">
                 <Button text="News" styleClass="nav-btn"/>

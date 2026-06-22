@@ -88,7 +88,6 @@
 .icon-item:focused .icon-box {
     -fx-background-color: -accent-primary; /* Thay bằng màu var(--accent-primary) của bạn */
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 15, 0.0, 0, 10);
-    -fx-translate-y: -8px; /* Tương đương transform: translateY(-8px) */
 }
 
 .icon-svg {
