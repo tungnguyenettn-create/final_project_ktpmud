@@ -128,12 +128,12 @@ public class MainPageController implements Initializable {
             String git = "https://github.com/tungnguyenettn-create/final_project_ktpmud/tree/master";
 
             // 2. Kiểm tra xem máy tính có hỗ trợ tính năng mở trình duyệt không
-            if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+            /*if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
                 Desktop.getDesktop().browse(new URI(git));
                 Desktop.getDesktop().browse(new URI(url));
                 System.out.println("Đã mở web bằng Java Desktop.");
                 return; // Mở thành công thì kết thúc hàm luôn
-            }
+            }*/
             
             // Cách 2: Nếu hệ điều hành không hỗ trợ Cách 1 (Rất hay gặp trên Linux/Ubuntu)
             // Lấy tên hệ điều hành đang chạy
@@ -141,17 +141,17 @@ public class MainPageController implements Initializable {
             
             if (os.contains("nix") || os.contains("nux")) {
                 // Trên Linux/Ubuntu, dùng lệnh xdg-open của hệ thống
-                Runtime.getRuntime().exec(new String[]{"xdg-open " + git});
-                Runtime.getRuntime().exec(new String[]{"xdg-open " + url});
+                Runtime.getRuntime().exec(new String[]{"xdg-open", git});
+                Runtime.getRuntime().exec(new String[]{"xdg-open", url});
                 System.out.println("Đã mở web bằng lệnh Linux xdg-open.");
             } else if (os.contains("win")) {
                 // Dự phòng cho Windows
-                Runtime.getRuntime().exec(new String[]{"rundll32 url.dll,FileProtocolHandler " + git});
-                Runtime.getRuntime().exec(new String[]{"rundll32 url.dll,FileProtocolHandler " + url});
+                Runtime.getRuntime().exec(new String[] {"cmd", "/c", "start", git});
+                Runtime.getRuntime().exec(new String[] {"cmd", "/c", "start", url});
             } else if (os.contains("mac")) {
                 // Dự phòng cho MacOS
-                Runtime.getRuntime().exec(new String[]{"open " + git});
-                Runtime.getRuntime().exec(new String[]{"open " + url});
+                Runtime.getRuntime().exec(new String[]{"open", git});
+                Runtime.getRuntime().exec(new String[]{"open", url});
             } else {
                 System.err.println("Không nhận diện được hệ điều hành để mở web!");
             }
