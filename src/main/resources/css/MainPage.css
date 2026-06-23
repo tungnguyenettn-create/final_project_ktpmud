@@ -78,7 +78,6 @@
     -fx-border-radius: 24px;
     -fx-background-radius: 24px;
     -fx-alignment: CENTER;
-
     /* Box shadow */
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 6, 0.0, 0, 4);
 }

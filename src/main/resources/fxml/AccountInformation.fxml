@@ -55,7 +55,7 @@
 
                     <HBox spacing="24">
                         <Button text="User Information" styleClass="btn-secondary" onMouseClicked="#handleUserInformation"/>
-                        <Button text="Account Information" styleClass="btn-primary"/>
+                        <Button text="Account Information" styleClass="btn-primary" onMouseClicked="#handleAccountInformation"/>
                     </HBox>
 
                     <VBox styleClass="card" spacing="24" alignment="TOP_LEFT">
