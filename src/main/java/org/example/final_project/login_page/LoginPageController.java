@@ -66,6 +66,9 @@ public class LoginPageController implements Initializable {
                 case 1 -> {
                     showAlert(Alert.AlertType.ERROR, "Dang nhap khong thanh cong", "Sai mat khau!");
                 }
+                case 3 -> {
+                    showAlert(Alert.AlertType.ERROR, "Dang nhap khong thanh cong", "Da dang nhap o thiet bi khac");
+                }
                 case 0 -> {
                     showAlert(Alert.AlertType.ERROR, "Dang nhap khong thanh cong", "Tai khoan khong ton tai!");
                 }
