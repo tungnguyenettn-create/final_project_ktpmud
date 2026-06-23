@@ -18,13 +18,22 @@ public class AccountHandling {
         try {
             Map<String, String> body = Map.of("username", account, "password", password);
             JsonNode resp = ApiClient.post("/api/customer/login", body, null);
+
             if (ApiClient.isSuccess(resp)) {
                 if (tokenHolder != null)
                     tokenHolder[0] = resp.get("token").asText();
-                return 2;
+                return 2;   // ✅ Login success
             }
+
             String msg = resp.has("message") ? resp.get("message").asText() : "";
+
+            // ✅ Detect duplicate login (Flask returns 403 with this message)
+            if (msg.contains("đăng nhập ở nơi khác") || msg.contains("Vui lòng đăng xuất")) {
+                return 3;   // ✅ New return code: already logged in elsewhere
+            }
+
             return msg.contains("Sai") ? 1 : 0;
+
         } catch (Exception e) {
             System.err.println("[ERROR login] " + e.getMessage());
             return -1;
