@@ -116,7 +116,7 @@ public class MainPageController implements Initializable {
     @FXML private void handleSummary(MouseEvent e)      { switchIfAuth("/fxml/Summary.fxml",      "Summary Page",      "/css/summary.css"); }
 
     @FXML private void handleExplore(MouseEvent e) { System.out.println("Explore — chua co trang"); }
-    @FXML private void handleMyQR(MouseEvent e)    { System.out.println("My QR — chua co trang"); }
+    @FXML private void handleMyQR(MouseEvent e)         { switchIfAuth("/fxml/MyQR.fxml",         "MyQR Page",         "/css/myqr.css"); }
 
     // --- HELPERS ---
     private void switchIfAuth(String fxml, String title, String css) {
