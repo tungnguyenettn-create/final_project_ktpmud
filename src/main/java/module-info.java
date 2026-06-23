@@ -13,6 +13,8 @@ module org.example.final_project {
     requires com.google.zxing;
     requires com.google.zxing.javase;
 
+    requires java.desktop;
+
     opens org.example.final_project to javafx.fxml;
     exports org.example.final_project;
     opens org.example.final_project.main_page to javafx.graphics, javafx.fxml;
