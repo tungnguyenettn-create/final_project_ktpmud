@@ -8,6 +8,10 @@ module org.example.final_project {
     // 2. Mở đúng package của bạn cho Jackson gom dữ liệu
     opens org.example.final_project.api to com.fasterxml.jackson.databind;
     requires java.net.http;
+    
+    // Thêm 2 dòng này để cấp quyền cho ZXing
+    requires com.google.zxing;
+    requires com.google.zxing.javase;
 
     opens org.example.final_project to javafx.fxml;
     exports org.example.final_project;
