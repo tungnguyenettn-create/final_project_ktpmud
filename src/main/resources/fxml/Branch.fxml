@@ -57,87 +57,12 @@
                     <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
                                 style="-fx-background-color: transparent; -fx-background: transparent;">
 
-                        <FlowPane hgap="40" vgap="40" alignment="BASELINE_CENTER">
+                        <FlowPane fx:id="branchesFlowPane" hgap="40" vgap="40" alignment="BASELINE_CENTER">
                             <padding>
                                 <Insets bottom="16" right="16"/>
                             </padding>
-
-                            <VBox styleClass="card" prefWidth="420.0" prefHeight="120.0" spacing="8">
-                                <padding>
-                                    <Insets top="24" bottom="24" left="24" right="24"/>
-                                </padding>
-                                <Label text="Main Branch" styleClass="text-desc-medium" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
-                                <Label text="123 Financial District, NY 10001" wrapText="true"/>
-                                <Label text="Open: 9 AM - 5 PM" style="-fx-text-fill: -text-muted; -fx-font-size: 13px;"/>
-                            </VBox>
-
-                            <VBox styleClass="card" prefWidth="420.0" spacing="8">
-                                <padding>
-                                    <Insets top="24" bottom="24" left="24" right="24"/>
-                                </padding>
-                                <Label text="Uptown Branch" styleClass="text-desc-medium" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
-                                <Label text="456 North Ave, NY 10002" wrapText="true"/>
-                                <Label text="Open: 9 AM - 4 PM" style="-fx-text-fill: -text-muted; -fx-font-size: 13px;"/>
-                            </VBox>
-
-                            <VBox styleClass="card" prefWidth="420.0" spacing="8">
-                                <padding>
-                                    <Insets top="24" bottom="24" left="24" right="24"/>
-                                </padding>
-                                <Label text="Uptown Branch" styleClass="text-desc-medium" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
-                                <Label text="456 North Ave, NY 10002" wrapText="true"/>
-                                <Label text="Open: 9 AM - 4 PM" style="-fx-text-fill: -text-muted; -fx-font-size: 13px;"/>
-                            </VBox>
-                            <VBox styleClass="card" prefWidth="420.0" spacing="8">
-                                <padding>
-                                    <Insets top="24" bottom="24" left="24" right="24"/>
-                                </padding>
-                                <Label text="Uptown Branch" styleClass="text-desc-medium" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
-                                <Label text="456 North Ave, NY 10002" wrapText="true"/>
-                                <Label text="Open: 9 AM - 4 PM" style="-fx-text-fill: -text-muted; -fx-font-size: 13px;"/>
-                            </VBox>
-                            <VBox styleClass="card" prefWidth="420.0" spacing="8">
-                                <padding>
-                                    <Insets top="24" bottom="24" left="24" right="24"/>
-                                </padding>
-                                <Label text="Uptown Branch" styleClass="text-desc-medium" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
-                                <Label text="456 North Ave, NY 10002" wrapText="true"/>
-                                <Label text="Open: 9 AM - 4 PM" style="-fx-text-fill: -text-muted; -fx-font-size: 13px;"/>
-                            </VBox>
-                            <VBox styleClass="card" prefWidth="420.0" spacing="8">
-                                <padding>
-                                    <Insets top="24" bottom="24" left="24" right="24"/>
-                                </padding>
-                                <Label text="Uptown Branch" styleClass="text-desc-medium" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
-                                <Label text="456 North Ave, NY 10002" wrapText="true"/>
-                                <Label text="Open: 9 AM - 4 PM" style="-fx-text-fill: -text-muted; -fx-font-size: 13px;"/>
-                            </VBox>
-                            <VBox styleClass="card" prefWidth="420.0" spacing="8">
-                                <padding>
-                                    <Insets top="24" bottom="24" left="24" right="24"/>
-                                </padding>
-                                <Label text="Uptown Branch" styleClass="text-desc-medium" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
-                                <Label text="456 North Ave, NY 10002" wrapText="true"/>
-                                <Label text="Open: 9 AM - 4 PM" style="-fx-text-fill: -text-muted; -fx-font-size: 13px;"/>
-                            </VBox>
-                            <VBox styleClass="card" prefWidth="420.0" spacing="8">
-                                <padding>
-                                    <Insets top="24" bottom="24" left="24" right="24"/>
-                                </padding>
-                                <Label text="Uptown Branch" styleClass="text-desc-medium" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
-                                <Label text="456 North Ave, NY 10002" wrapText="true"/>
-                                <Label text="Open: 9 AM - 4 PM" style="-fx-text-fill: -text-muted; -fx-font-size: 13px;"/>
-                            </VBox>
-                            <VBox styleClass="card" prefWidth="420.0" spacing="8">
-                                <padding>
-                                    <Insets top="24" bottom="24" left="24" right="24"/>
-                                </padding>
-                                <Label text="Uptown Branch" styleClass="text-desc-medium" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
-                                <Label text="456 North Ave, NY 10002" wrapText="true"/>
-                                <Label text="Open: 9 AM - 4 PM" style="-fx-text-fill: -text-muted; -fx-font-size: 13px;"/>
-                            </VBox>
-
                         </FlowPane>
+
                     </ScrollPane>
                 </VBox>
             </StackPane>
