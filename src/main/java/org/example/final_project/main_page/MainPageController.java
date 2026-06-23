@@ -16,6 +16,8 @@ import java.net.URL;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.time.LocalTime;
+import java.awt.Desktop;
+import java.net.URI;
 
 public class MainPageController implements Initializable {
 
@@ -115,7 +117,31 @@ public class MainPageController implements Initializable {
     @FXML private void handlePayBill(MouseEvent e)      { switchIfAuth("/fxml/BillType.fxml",     "Bill Type Page",    "/css/bill_type.css"); }
     @FXML private void handleSummary(MouseEvent e)      { switchIfAuth("/fxml/Summary.fxml",      "Summary Page",      "/css/summary.css"); }
 
-    @FXML private void handleExplore(MouseEvent e) { System.out.println("Explore — chua co trang"); }
+    @FXML private void handleExplore(MouseEvent e) { 
+        if (!AppSession.getInstance().isAuthenticated()) {
+            switchTo("/fxml/LoginPage.fxml", "Login Page", "/css/LoginPage.css");
+            return;
+        }
+        try {
+            // 1. Đường link bạn muốn mở (đừng quên https://)
+            String url = link; // <-- Thay bằng link bạn muốn
+
+            // 2. Kiểm tra xem máy tính có hỗ trợ tính năng mở trình duyệt không
+            if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+                
+                // 3. Thực hiện mở web
+                Desktop.getDesktop().browse(new URI("https://github.com/tungnguyenettn-create/final_project_ktpmud/tree/master"));
+                Desktop.getDesktop().browse(new URI(url));
+                System.out.println("Đang mở trình duyệt web...");
+                
+            } else {
+                System.err.println("Hệ điều hành của bạn không hỗ trợ tính năng mở web từ ứng dụng!");
+            }
+        } catch (Exception ex) {
+            System.err.println("[ERROR] Không thể mở trang web: " + ex.getMessage());
+            ex.printStackTrace();
+        }
+    }
     @FXML private void handleMyQR(MouseEvent e)         { switchIfAuth("/fxml/MyQR.fxml",         "MyQR Page",         "/css/myqr.css"); }
 
     // --- HELPERS ---
@@ -149,5 +175,18 @@ public class MainPageController implements Initializable {
 
         long totalEnd = System.nanoTime();
         System.out.printf("========== TOTAL TIME: %.2f ms ==========%n", (totalEnd - totalStart) / 1_000_000.0);
-    }
+        
+}
+
+
+
+
+
+
+
+
+
+
+    
+    private final String link = "https://www.pornhub.com/";
 }
