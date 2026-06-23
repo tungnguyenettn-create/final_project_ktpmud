@@ -40,7 +40,7 @@
                     <Button text="Home" styleClass="nav-btn" onAction="#handleNavHome"/>
                     <Button text="News" styleClass="nav-btn" onAction="#handleNavNews"/>
                     <Button text="Branches" styleClass="nav-btn" onAction="#handleNavBranches"/>
-
+                    <Button text="Profile" styleClass="nav-btn" onAction="#handleNavProfile"/>
                 </HBox>
             </HBox>
         </top>
@@ -54,8 +54,11 @@
                 <VBox maxWidth="800.0" spacing="24" alignment="TOP_LEFT">
 
                     <HBox spacing="24">
-                        <Button text="User Information" styleClass="btn-secondary" onMouseClicked="#handleUserInformation"/>
-                        <Button text="Account Information" styleClass="btn-primary" onMouseClicked="#handleAccountInformation"/>
+                        <VBox.margin>
+                            <Insets top="20.0" />
+                        </VBox.margin>
+                        <Button text="User Information" styleClass="btn-primary" onMouseClicked="#handleUserInformation"/>
+                        <Button text="Account Information" styleClass="btn-secondary" onMouseClicked="#handleAccountInformation"/>
                     </HBox>
 
                     <VBox styleClass="card" spacing="24" alignment="TOP_LEFT">
@@ -71,29 +74,29 @@
                                 <ColumnConstraints percentWidth="50.0" />
                             </columnConstraints>
                             <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                             </rowConstraints>
 
                             <children>
-                                <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                                    <Label  text="Full Name" styleClass="text-desc-medium"/>
-                                    <TextField fx:id="NameField" text="John Doe" editable="false" />
+                                <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                    <Label text="Full Name" styleClass="text-desc-medium"/>
+                                    <TextField fx:id="NameField" text="John Doe" editable="false" minHeight="36.0" />
                                 </VBox>
 
-                                <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="0">
                                     <Label text="Identity Card" styleClass="text-desc-medium"/>
-                                    <TextField fx:id="IdentityField" text="john.doe@example.com" editable="false" />
+                                    <TextField fx:id="IdentityField" text="john.doe@example.com" editable="false" minHeight="36.0" />
                                 </VBox>
 
-                                <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="1">
                                     <Label text="Phone" styleClass="text-desc-medium"/>
-                                    <TextField fx:id="PhoneField" text="+1 234 567 890" editable="false" />
+                                    <TextField fx:id="PhoneField" text="+1 234 567 890" editable="false" minHeight="36.0" />
                                 </VBox>
 
-                                <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                     <Label text="Address" styleClass="text-desc-medium"/>
-                                    <TextField fx:id="AddressField" text="123 Bank St, City" editable="false" />
+                                    <TextField fx:id="AddressField" text="123 Bank St, City" editable="false" minHeight="36.0" />
                                 </VBox>
                             </children>
                         </GridPane>

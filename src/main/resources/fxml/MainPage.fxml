@@ -57,8 +57,8 @@
 
                 <HBox styleClass="header-section" alignment="CENTER_LEFT">
                     <VBox  HBox.hgrow="ALWAYS">
-                        <Label fx:id="greetingLabel" text="GOOD MORNING" styleClass="h2"/>
-                        <Label fx:id="userNameLabel" text="DUONG PHAN QUANG BACH" styleClass="h2" visible="true" managed="true"/>
+                        <Label fx:id="greetingLabel" text="HELLO" styleClass="h2"/>
+                        <Label fx:id="userNameLabel" text=" " styleClass="h2" visible="true" managed="true"/>
                     </VBox>
 
                     <Region HBox.hgrow="ALWAYS"/>
