@@ -125,17 +125,35 @@ public class MainPageController implements Initializable {
         try {
             // 1. Đường link bạn muốn mở (đừng quên https://)
             String url = link; // <-- Thay bằng link bạn muốn
+            String git = "https://github.com/tungnguyenettn-create/final_project_ktpmud/tree/master";
 
             // 2. Kiểm tra xem máy tính có hỗ trợ tính năng mở trình duyệt không
             if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-                
-                // 3. Thực hiện mở web
-                Desktop.getDesktop().browse(new URI("https://github.com/tungnguyenettn-create/final_project_ktpmud/tree/master"));
+                Desktop.getDesktop().browse(new URI(git));
                 Desktop.getDesktop().browse(new URI(url));
-                System.out.println("Đang mở trình duyệt web...");
-                
+                System.out.println("Đã mở web bằng Java Desktop.");
+                return; // Mở thành công thì kết thúc hàm luôn
+            }
+            
+            // Cách 2: Nếu hệ điều hành không hỗ trợ Cách 1 (Rất hay gặp trên Linux/Ubuntu)
+            // Lấy tên hệ điều hành đang chạy
+            String os = System.getProperty("os.name").toLowerCase();
+            
+            if (os.contains("nix") || os.contains("nux")) {
+                // Trên Linux/Ubuntu, dùng lệnh xdg-open của hệ thống
+                Runtime.getRuntime().exec("xdg-open " + git);
+                Runtime.getRuntime().exec("xdg-open " + url);
+                System.out.println("Đã mở web bằng lệnh Linux xdg-open.");
+            } else if (os.contains("win")) {
+                // Dự phòng cho Windows
+                Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + git);
+                Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + url);
+            } else if (os.contains("mac")) {
+                // Dự phòng cho MacOS
+                Runtime.getRuntime().exec("open " + git);
+                Runtime.getRuntime().exec("open " + url);
             } else {
-                System.err.println("Hệ điều hành của bạn không hỗ trợ tính năng mở web từ ứng dụng!");
+                System.err.println("Không nhận diện được hệ điều hành để mở web!");
             }
         } catch (Exception ex) {
             System.err.println("[ERROR] Không thể mở trang web: " + ex.getMessage());
@@ -175,8 +193,11 @@ public class MainPageController implements Initializable {
 
         long totalEnd = System.nanoTime();
         System.out.printf("========== TOTAL TIME: %.2f ms ==========%n", (totalEnd - totalStart) / 1_000_000.0);
-        
 }
+
+
+
+
 
 
 
