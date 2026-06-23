@@ -141,17 +141,17 @@ public class MainPageController implements Initializable {
             
             if (os.contains("nix") || os.contains("nux")) {
                 // Trên Linux/Ubuntu, dùng lệnh xdg-open của hệ thống
-                Runtime.getRuntime().exec("xdg-open " + git);
-                Runtime.getRuntime().exec("xdg-open " + url);
+                Runtime.getRuntime().exec(new String[]{"xdg-open " + git});
+                Runtime.getRuntime().exec(new String[]{"xdg-open " + url});
                 System.out.println("Đã mở web bằng lệnh Linux xdg-open.");
             } else if (os.contains("win")) {
                 // Dự phòng cho Windows
-                Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + git);
-                Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + url);
+                Runtime.getRuntime().exec(new String[]{"rundll32 url.dll,FileProtocolHandler " + git});
+                Runtime.getRuntime().exec(new String[]{"rundll32 url.dll,FileProtocolHandler " + url});
             } else if (os.contains("mac")) {
                 // Dự phòng cho MacOS
-                Runtime.getRuntime().exec("open " + git);
-                Runtime.getRuntime().exec("open " + url);
+                Runtime.getRuntime().exec(new String[]{"open " + git});
+                Runtime.getRuntime().exec(new String[]{"open " + url});
             } else {
                 System.err.println("Không nhận diện được hệ điều hành để mở web!");
             }
@@ -194,12 +194,6 @@ public class MainPageController implements Initializable {
         long totalEnd = System.nanoTime();
         System.out.printf("========== TOTAL TIME: %.2f ms ==========%n", (totalEnd - totalStart) / 1_000_000.0);
 }
-
-
-
-
-
-
 
 
 
