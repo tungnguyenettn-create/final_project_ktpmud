@@ -54,6 +54,7 @@ public class LoginPageController implements Initializable {
 
             switch (result) {
                 case 2 -> {
+                    showAlert(Alert.AlertType.CONFIRMATION, "Dang Nhap Thanh Cong", "Chuyen sang trang chu");
                     // AppSession da luu JWT, chi can chuyen trang
                     //lblMessage.setText("");
                     Stage primaryStage = (Stage) loginBtn.getScene().getWindow();

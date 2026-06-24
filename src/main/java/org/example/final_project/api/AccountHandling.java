@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import org.example.final_project.AppSession;
 public class AccountHandling {
 
     public static int login(String account, String password) {
@@ -126,6 +126,16 @@ public class AccountHandling {
         System.out.println(meta.toString());
         return meta;
     }
+    public static void logout(String  token) {
+        try {
+            JsonNode resp = ApiClient.post("/api/customer/logout", "", token);
+            System.out.println(resp.toString());
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+        }finally{
+            AppSession.getInstance().logout();
+        }
+    }
 
     private static String textOrNull(JsonNode node, String field) {
         JsonNode f = node.get(field);
@@ -149,5 +159,6 @@ public class AccountHandling {
         }
 
         System.out.println("Accounts by CCCD 'CUST-ID-14': " + getAccountFromUser("CUST-ID-14").getFirst());
+        logout(tokenHolder[0]);
     }
 }

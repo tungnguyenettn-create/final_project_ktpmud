@@ -10,6 +10,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import javafx.scene.Parent;
+import org.example.final_project.api.AccountHandling;
+import org.example.final_project.AppSession;
 // 1. Extend Application so JavaFX knows how to launch it
 public class MainPageUI extends Application {
     private Stage stage;
@@ -63,6 +65,13 @@ public class MainPageUI extends Application {
         return stage;
     }
 
+    @Override
+    public void stop() {
+        System.out.println("App closing — clearing session...");
+        if (AppSession.getInstance().isAuthenticated()) {
+            AccountHandling.logout(AppSession.getInstance().getAuthToken());  // tells Flask to delete Redis key
+        }
+    }
     // 3. The main method now launches this class successfully
     public static void main(String[] args) {
         launch(args);
